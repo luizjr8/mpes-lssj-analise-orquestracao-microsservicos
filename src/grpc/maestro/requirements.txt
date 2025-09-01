@@ -1,0 +1,8 @@
+python-multipart
+httpx
+fastapi
+uvicorn
+pydantic
+grpcio
+grpcio-tools
+protobuf

@@ -1,0 +1,17 @@
+syntax = "proto3";
+package mpes.stt;
+
+service STTService {
+  rpc Transcribe(TranscribeRequest) returns (TranscribeReply);
+}
+
+message TranscribeRequest {
+  bytes audio = 1;
+  string filename = 2;
+  string content_type = 3;
+}
+
+message TranscribeReply {
+  string text = 1;
+  string error = 2;
+}

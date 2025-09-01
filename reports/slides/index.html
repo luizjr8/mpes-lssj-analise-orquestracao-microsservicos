@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Defesa de Mestrado - Luiz Silva dos Santos Júnior</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f3f4f6; /* Fallback */
+    }
+
+    .slide {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 0.6s ease-in-out;
+      padding: 5% 8%;
+    }
+
+    .slide.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .slide-content {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    /* Typography */
+    .slide-content h1,
+    .slide-content h2,
+    .slide-content h3 {
+        font-family: 'Playfair Display', serif;
+        letter-spacing: -0.025em;
+    }
+
+    .slide-content h1 { font-weight: 900; font-size: clamp(2.5rem, 5vw, 3.75rem); }
+    .slide-content h2 { font-weight: 700; font-size: clamp(2rem, 4vw, 3rem); }
+    .slide-content h3 { font-weight: 700; font-size: clamp(1.25rem, 2.5vw, 1.875rem); }
+    .slide-content p, .slide-content li, .slide-content ol {
+        font-size: clamp(1rem, 2vw, 1.25rem);
+        line-height: 1.2;
+    }
+
+    .highlight {
+        color: #3b82f6; /* blue-500 */
+        font-weight: 700;
+    }
+
+    /* Backgrounds */
+    .slide.bg-light {
+        background: radial-gradient(circle at 90% 10%, #ffffff 0%, #f3f4f6 80%);
+    }
+    .slide.bg-dark {
+        background: radial-gradient(ellipse at 50% 100%, #374151 0%, #111827 90%);
+        color: #d1d5db; /* gray-300 */
+    }
+    .slide.bg-dark h1, .slide.bg-dark h2, .slide.bg-dark h3 {
+        color: #eff6ff; /* blue-50 */
+    }
+    .slide.bg-dark .badge-blue {
+        background-color: #1e3a8a; color: #dbeafe;
+    }
+    .slide.bg-dark .bg-gray-700 {
+        background-color: rgba(55, 65, 81, 0.5);
+        border: 1px solid rgba(75, 85, 99, 0.5);
+    }
+     .slide.bg-dark .bg-blue-900\/50 {
+        background-color: rgba(30, 58, 138, 0.3);
+    }
+    .bg-dark .text-shadow {
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    }
+    .bg-dark .text-glow {
+        text-shadow: 0 0 8px rgba(219, 234, 254, 0), 0 0 12px rgba(147, 197, 253, 0.2);
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-weight: 700;
+      font-size: 0.875rem;
+    }
+
+    .badge-blue { background-color: #dbeafe; color: #1e40af; }
+    .badge-red { background-color: #fee2e2; color: #991b1b; }
+    .badge-green { background-color: #dcfce7; color: #166534; }
+
+
+    /* Counter */
+
+    #slide-counter {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      padding: 5px 15px;
+      border-radius: 15px;
+      font-size: 16px;
+      z-index: 100;
+    }
+
+    /* Specific slide styles */
+    #slide-1 .slide-content {
+      align-items: flex-start;
+      text-align: left;
+    }
+
+    li {
+      margin-bottom: 1rem;
+    }
+
+    .text-shadow {
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.10);
+    }
+  </style>
+</head>
+
+<body class="text-gray-800">
+
+  <!-- Slide 1: Capa -->
+  <div id="slide-1" class="slide active bg-dark text-white">
+    <div class="slide-content">
+      <div class="w-full">
+        <p class="text-2xl text-blue-300 mb-4 text-glow">Defesa de Dissertação de Mestrado</p>
+        <h1 class="text-5xl md:text-6xl font-black mb-6 leading-tight text-glow">Orquestração de Microsserviços para
+          Assistentes Virtuais Multimodais:</h1>
+        <h2 class="text-4xl md:text-5xl font-bold text-slate-300 mb-12 text-glow">Análise Comparativa no Contexto do
+          Mercado Financeiro</h2>
+        <p class="text-2xl font-bold text-shadow">Luiz Silva dos Santos Júnior</p>
+        <p class="text-xl text-slate-400 mt-2 text-shadow">Orientadora: Profª. Drª. Pâmela Thays Lins Bezerra</p>
+        <p class="text-lg text-slate-500 mt-8 text-shadow">CESAR School - Programa de Pós-Graduação em Engenharia de
+          Software</p>
+        <p class="text-lg text-slate-500 mt-2 text-shadow">Setembro, 2025</p>
+        <div class="w-full text-center mt-12 absolute bottom-10 left-0">
+          <img src="../../tex/imagens/capa/logos-cesar.png" alt="CESAR School Logo" class="h-16 mx-auto">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 2: Apresentação Pessoal e Agenda -->
+  <div id="slide-2" class="slide">
+    <div class="slide-content items-start text-left">
+      <h2 class="text-4xl font-bold mb-8 text-shadow">Quem sou eu e o que veremos hoje</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 w-full">
+        <div class="bg-white p-8 rounded-2xl shadow-lg">
+          <h3 class="text-2xl font-bold text-blue-600 mb-4">Apresentação</h3>
+          <p class="text-lg">Sou Luiz Junior, cientista de dados com experiência em projetos de tecnologia e inteligência artificial. Atuei recentemente no mercado financeiro, onde trabalhei com soluções voltadas à análise e eficiência de sistemas complexos.</p>
+        </div>
+        <div class="bg-white p-8 rounded-2xl shadow-lg">
+          <h3 class="text-2xl font-bold text-blue-600 mb-4">Roteiro da Apresentação</h3>
+          <ol class="list-decimal list-inside text-lg space-y-3">
+            <li><span class="font-bold">O Cenário:</span> Transformação digital no financeiro</li>
+            <li><span class="font-bold">O Problema:</span> Eficiência na comunicação entre IAs</li>
+            <li><span class="font-bold">A Jornada:</span> Da pergunta à metodologia</li>
+            <li><span class="font-bold">O Experimento:</span> Avaliação controlada</li>
+            <li><span class="font-bold">Resultados e Conclusões:</span> Principais achados</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 3: O Cenário - Mercado Financeiro em Transformação -->
+  <div id="slide-3" class="slide bg-light">
+    <div class="slide-content items-start text-left">
+      <span class="badge badge-blue mb-4">1. O Cenário</span>
+      <h2 class="text-4xl font-bold mb-6 text-shadow">Mercado Financeiro em Transformação Digital</h2>
+      <p class="text-xl mb-8 max-w-4xl">O setor financeiro acelera a transformação digital por agilidade, personalização e eficiência.</p>
+      <div class="w-full grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+        <div class="bg-white p-6 rounded-2xl shadow-lg border-t-4 border-blue-500">
+          <p class="text-4xl font-extrabold text-blue-600">R$ 47,4 bi</p>
+          <p class="mt-2 text-gray-600">Investidos em tecnologia pelo setor apenas em 2024.</p>
+        </div>
+        <div class="bg-white p-6 rounded-2xl shadow-lg border-t-4 border-blue-500">
+          <p class="text-4xl font-extrabold text-blue-600">IA Generativa</p>
+          <p class="mt-2 text-gray-600">Exemplos como a BIA (Bradesco) e Magnetis redefinem a interação com o cliente.
+          </p>
+        </div>
+        <div class="bg-white p-6 rounded-2xl shadow-lg border-t-4 border-blue-500">
+          <p class="text-4xl font-extrabold text-blue-600">O Grande Desafio</p>
+          <p class="mt-2 text-gray-600">Sistemas de IA são poderosos, mas exigem um custo computacional enorme.</p>
+        </div>
+      </div>
+
+      <!-- Nota de rodapé -->
+      <div class="absolute bottom-4 left-4 right-4 text-xs text-gray-500 border-t pt-2">
+        <p><sup>1</sup> FEBRABAN. Pesquisa FEBRABAN de Tecnologia Bancária 2024. <sup>2</sup> Finn, 2024. <sup>3</sup> McKinsey, 2023.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 4: O Problema - O Custo da Inteligência -->
+  <div id="slide-4" class="slide bg-light">
+    <div class="slide-content items-start text-left">
+      <span class="badge badge-red mb-4">2. O Problema</span>
+      <h2 class="text-4xl font-bold mb-6 text-shadow">O Custo da Inteligência e o Dilema do Engenheiro</h2>
+      <p class="text-xl mb-8 max-w-4xl">IA multimodal impõe desafios práticos de infraestrutura e custo.</p>
+      <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="bg-white p-6 rounded-2xl shadow-lg">
+          <h3 class="font-bold text-xl mb-3 style="color: #16a34a;">O Peso dos Dados e do Processamento</h3>
+          <p class="mb-4"> <span class="font-bold style="color: #16a34a;">~2 MB de payload</span> para apenas 1 minuto de áudio.
+          </p>
+          <p> <span class="font-bold style="color: #16a34a;">~10 GB de VRAM</span> exigidos pelo modelo Whisper (large) para
+            operar.</p>
+        </div>
+        <div class="bg-white p-6 rounded-2xl shadow-lg">
+          <h3 class="font-bold text-xl mb-3 style="color: #16a34a;">O Dilema da Engenharia</h3>
+          <p class="mb-2"><span class="font-bold">Pressão de Mercado (FOMO):</span> Implantar IA a qualquer custo.</p>
+          <p class="mb-4"><span class="font-bold">Realidade Técnica:</span> Construir sistemas robustos, escaláveis e
+            com custo controlado.</p>
+          <p class="mt-4 border-t pt-4">A <span class="highlight font-bold">arquitetura de microsserviços</span> surge
+            como a solução para a escalabilidade.</p>
+        </div>
+      </div>
+
+      <!-- Nota de rodapé -->
+      <div class="absolute bottom-4 left-4 right-4 text-xs text-gray-500 border-t pt-2">
+        <p><sup>1</sup> Newman, 2022. <sup>2</sup> Fowler, 2022. <sup>3</sup> Lewis & Fowler, 2014.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 5: A Pergunta de Pesquisa (O Coração da Jornada) -->
+  <div id="slide-5" class="slide">
+    <div class="slide-content">
+      <h2 class="text-4xl font-bold mb-6 text-shadow">Pergunta de Pesquisa</h2>
+      <p class="text-xl mb-8 max-w-3xl">Em microsserviços, a <span class="highlight font-bold">comunicação</span> é crítica. Como torná-la mais eficiente?</p>
+      <div class="bg-white p-8 rounded-2xl shadow-2xl border-l-8 border-blue-500 text-left w-full max-w-4xl">
+        <p class="text-2xl font-bold leading-relaxed">Qual a efetividade comparativa de REST, gRPC e Thrift na orquestração de assistentes multimodais, considerando latência e performance?</p>
+      </div>
+      <p class="text-lg mt-8 max-w-3xl">A resposta impacta o <span class="font-bold">custo operacional</span>, a <span class="font-bold">escalabilidade</span> e a <span class="font-bold">experiência do usuário</span>.</p>
+    </div>
+  </div>
+
+  <!-- Slide 6: Fundamentando a Jornada: Pilares Teóricos -->
+  <div id="slide-6" class="slide bg-dark text-white">
+    <div class="slide-content items-start text-left">
+      <span class="badge badge-blue mb-4">3. A Jornada</span>
+      <h2 class="text-4xl font-bold mb-8 text-shadow">Pilares Teóricos</h2>
+      <p class="text-xl mb-8 max-w-4xl">Base conceitual que orientou o experimento.</p>
+      <div class="w-full grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-gray-700 p-6 rounded-xl">
+          <h3 class="font-bold text-lg text-blue-300">Microsserviços</h3>
+          <p>Entender os padrões atuais de arquitetura, orquestração e os desafios de sistemas distribuídos.</p>
+        </div>
+        <div class="bg-gray-700 p-6 rounded-xl">
+          <h3 class="font-bold text-lg text-blue-300">Assistentes Multi-Modais</h3>
+          <p>Como os modelos de IA (STT, LLM, TTS) são arquitetados e quais os seus gargalos de comunicação entre eles.</p>
+        </div>
+        <div class="bg-gray-700 p-6 rounded-xl">
+          <h3 class="font-bold text-lg text-blue-300">Comunicação</h3>
+          <p>Analisar os diferentes paradigmas de comunicação (síncrono vs. assíncrono) e seus protocolos.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 7: O Foco na Comunicação Síncrona -->
+  <div id="slide-7" class="slide">
+    <div class="slide-content items-start text-left">
+      <span class="badge badge-blue mb-4">3. A Jornada</span>
+      <h2 class="text-4xl font-bold mb-6 text-shadow">Foco: Comunicação síncrona</h2>
+      <p class="text-xl mb-8 max-w-4xl">Foco definido em comunicação síncrona.</p>
+      <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div class="bg-white p-8 rounded-2xl shadow-lg">
+          <h3 class="text-2xl font-bold text-blue-600 mb-4">Por que Síncrono?</h3>
+          <ul class="list-disc list-inside text-lg space-y-4">
+            <li><span class="font-bold">Natureza dos Assistentes:</span> Interações de pergunta e resposta são, por
+              definição, síncronas. O usuário espera uma resposta imediata.</li>
+            <li><span class="font-bold">Exigência do Mercado Financeiro:</span> Muitas operações (consultas de saldo,
+              cotações) são sensíveis ao tempo e exigem respostas em tempo real.</li>
+          </ul>
+        </div>
+        <div class="text-center">
+          <div class="bg-blue-50 p-6 rounded-xl shadow-lg border">
+            <p class="font-bold text-lg mb-2">Comunicação Síncrona</p>
+            <p class="text-gray-700">O cliente envia uma requisição e bloqueia sua execução até receber uma resposta do
+              servidor. Essencial para fluxos sequenciais e interativos.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 8: A Escolha dos Protocolos -->
+  <div id="slide-8" class="slide bg-light">
+    <div class="slide-content items-start text-left">
+      <span class="badge badge-blue mb-4">3. A Jornada</span>
+      <h2 class="text-4xl font-bold mb-6 text-shadow">Protocolos avaliados</h2>
+      <p class="text-xl mb-8 max-w-4xl">Três tecnologias representativas para comunicação síncrona.</p>
+      <div class="w-full grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-white p-6 rounded-2xl shadow-md border-b-4 border-gray-400">
+          <h3 class="font-bold text-xl text-gray-800 mb-2">REST</h3>
+          <p class="italic text-gray-700">O Padrão de Mercado</p>
+          <p class="mt-3 text-sm text-gray-600">Onipresente e simples de implementar. Serve como nossa linha de base
+            (baseline) para comparação.</p>
+        </div>
+        <div class="bg-white p-6 rounded-2xl shadow-md border-b-4 border-blue-500">
+          <h3 class="font-bold text-xl text-blue-800 mb-2">gRPC</h3>
+          <p class="italic text-gray-700">RPC binário sobre HTTP/2</p>
+          <p class="mt-3 text-sm text-blue-700">Protocol Buffers (IDL), suporte a streaming; baixa latência e eficiência entre microsserviços.</p>
+        </div>
+        <div class="bg-white p-6 rounded-2xl shadow-md border-b-4 border-indigo-500">
+          <h3 class="font-bold text-xl text-indigo-800 mb-2">Apache Thrift</h3>
+          <p class="italic text-gray-700">RPC binário multiplataforma</p>
+          <p class="mt-3 text-sm" style="color: #2563eb;">IDL própria, múltiplos protocolos/transportes; foco em interoperabilidade e eficiência.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 9: Pistas na Literatura: Estado da Arte -->
+  <div id="slide-9" class="slide bg-dark text-white">
+    <div class="slide-content items-start text-left">
+      <span class="badge badge-blue mb-4">3. A Jornada</span>
+      <h2 class="text-4xl font-bold mb-8 text-shadow">Estado da arte</h2>
+      <p class="text-xl mb-8 max-w-4xl">O que a literatura mostra e onde está a lacuna.</p>
+      <div class="w-full grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-gray-700 p-6 rounded-xl">
+          <h3 class="font-bold text-lg text-blue-300">Niswar (2024)</h3>
+          <p class="mb-3">Comparou protocolos, mas em um contexto genérico, <span class="font-bold">sem a carga de uma IA</span>.</p>
+          <p class="text-sm text-blue-200"><span class="font-bold">Achado:</span> gRPC superior ao REST e GraphQL em dados estáticos</p>
+        </div>
+        <div class="bg-gray-700 p-6 rounded-xl">
+          <h3 class="font-bold text-lg text-blue-300">Maulana (2022)</h3>
+          <p class="mb-3">Validou microsserviços em bancos, mas <span class="font-bold">não comparou os protocolos</span> de
+            comunicação.</p>
+          <p class="text-sm text-blue-200"><span class="font-bold">Achado:</span> Viabilidade da arquitetura de microsserviços em bancos</p>
+        </div>
+        <div class="bg-gray-700 p-6 rounded-xl">
+          <h3 class="font-bold text-lg text-blue-300">Jhingran (2024)</h3>
+          <p class="mb-3">Propôs a ideia teoricamente, mas <span class="font-bold">sem um experimento prático</span> e controlado.
+          </p>
+          <p class="text-sm text-blue-200"><span class="font-bold">Achado:</span> Descentralização pode melhorar escalabilidade em IA</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 10: Posicionamento no Estado da Arte -->
+  <div id="slide-10" class="slide bg-light">
+    <div class="slide-content items-start text-left">
+      <span class="badge badge-blue mb-4">3. A Jornada</span>
+      <h2 class="text-4xl font-bold mb-6 text-shadow">Posicionamento no Estado da Arte</h2>
+      <p class="text-xl mb-6 max-w-4xl">Comparação com estudos relacionados revela lacunas preenchidas por esta pesquisa.</p>
+
+      <div class="w-full bg-white p-6 rounded-xl shadow-lg overflow-x-auto">
+        <table class="w-full text-base">
+          <thead>
+            <tr class="border-b-2 border-gray-300">
+              <th class="text-left py-3 px-2 font-bold">Aspecto</th>
+              <th class="text-left py-3 px-2 font-bold">Niswar (2024)</th>
+              <th class="text-left py-3 px-2 font-bold">Maulana (2022)</th>
+              <th class="text-left py-3 px-2 font-bold">Jhingran (2024)</th>
+              <th class="text-left py-3 px-2 font-bold bg-blue-50">Esta Dissertação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-gray-200">
+              <td class="py-2 px-2 font-semibold">Domínio</td>
+              <td class="py-2 px-2">Sistema Educacional</td>
+              <td class="py-2 px-2">Sistema Bancário Genérico</td>
+              <td class="py-2 px-2">IA Generativa Genérica</td>
+              <td class="py-2 px-2 bg-blue-50 font-bold">Assistentes Virtuais Financeiros Multimodais</td>
+            </tr>
+            <tr class="border-b border-gray-200">
+              <td class="py-2 px-2 font-semibold">Protocolos</td>
+              <td class="py-2 px-2">REST, GraphQL, gRPC</td>
+              <td class="py-2 px-2">Monolítico vs Microsserviços</td>
+              <td class="py-2 px-2">Centralizado vs Descentralizado</td>
+              <td class="py-2 px-2 bg-blue-50 font-bold">REST, gRPC, Apache Thrift</td>
+            </tr>
+            <tr class="border-b border-gray-200">
+              <td class="py-2 px-2 font-semibold">Ambiente</td>
+              <td class="py-2 px-2">Dados estáticos</td>
+              <td class="py-2 px-2">Migração real limitada</td>
+              <td class="py-2 px-2">Teórico/simulado</td>
+              <td class="py-2 px-2 bg-blue-50 font-bold">Ambiente controlado com IA real</td>
+            </tr>
+            <tr class="border-b border-gray-200">
+              <td class="py-2 px-2 font-semibold">Foco em IA</td>
+              <td class="py-2 px-2">Não</td>
+              <td class="py-2 px-2">Não</td>
+              <td class="py-2 px-2">Sim (Teórico)</td>
+              <td class="py-2 px-2 bg-blue-50 font-bold">Sim (Experimental)</td>
+            </tr>
+            <tr class="border-b border-gray-200">
+              <td class="py-2 px-2 font-semibold">Multimodalidade</td>
+              <td class="py-2 px-2">Não</td>
+              <td class="py-2 px-2">Não</td>
+              <td class="py-2 px-2">Sim (LLM)</td>
+              <td class="py-2 px-2 bg-blue-50 font-bold">Sim (STT, LLM e TTS)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="mt-6 bg-yellow-100 p-6 rounded-xl shadow-lg border-l-4 border-yellow-500">
+        <h3 class="font-bold text-lg text-yellow-800 mb-3">🔍 Lacuna Identificada</h3>
+        <p class="text-yellow-800">
+          <span class="font-bold">Primeira investigação experimental abrangente</span> sobre orquestração de microsserviços
+          para assistentes virtuais multimodais no contexto financeiro, oferecendo diretrizes práticas baseadas em
+          evidências empíricas para decisões arquiteturais em um domínio de alta criticidade.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 11: O Plano de Ação - Arquitetura e Ambiente do Experimento -->
+  <div id="slide-11" class="slide">
+    <div class="slide-content items-start text-left">
+      <span class="badge badge-blue mb-4">4. O Experimento</span>
+      <h2 class="text-4xl font-bold mb-6 text-shadow">Arquitetura do experimento</h2>
+      <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div class="text-center">
+          <!-- Substituir por imagem real do diagrama -->
+          <div class="bg-white p-6 rounded-xl shadow-lg border">
+            <p class="font-bold text-lg mb-2">Fluxo Simplificado</p>
+            <p>Usuário (Voz) &rarr; <span class="highlight">STT</span> &rarr; Texto &rarr; <span
+                class="highlight">LLM</span> &rarr; Resposta (Texto) &rarr; <span class="highlight">TTS</span> &rarr;
+              Resposta (Voz)</p>
+          </div>
+          <img src="../../tex/imagens/4-arquitetura_cenario.png"
+            alt="Diagrama da Arquitetura de Microsserviços" class="mt-4 rounded-xl shadow-lg mx-auto max-h-80" />
+        </div>
+        <div class="bg-white p-8 rounded-2xl shadow-lg">
+          <h3 class="text-2xl font-bold text-blue-600 mb-4">Ambiente Controlado</h3>
+          <ul class="list-disc list-inside text-lg space-y-4">
+            <li><span class="font-bold">Docker:</span> Para isolamento e replicabilidade dos serviços.</li>
+            <li class="bg-blue-100 p-4 rounded-lg">
+              <span class="font-bold text-blue-800">Hardware de Ponta (GPU A100):</span>
+              <p class="text-md text-blue-700 mt-1">Usamos um hardware robusto para garantir que o gargalo medido fosse
+                o da <span class="font-bold">comunicação</span>, e não do processamento da IA.</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 12: Protótipo Assistente -->
+  <div id="slide-12" class="slide">
+    <div class="slide-content">
+      <h2 class="text-4xl font-bold mb-8 text-shadow">Protótipo Assistente</h2>
+      <div class="flex justify-center items-center h-full">
+        <img src="../imagens/repo_src.png" alt="Protótipo do Assistente Virtual" class="rounded-xl shadow-2xl max-h-[70vh] max-w-full object-contain" />
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 13: Os Desafios - Cenários de Teste -->
+  <div id="slide-13" class="slide bg-light">
+    <div class="slide-content items-start text-left">
+      <span class="badge badge-blue mb-4">4. O Experimento</span>
+      <h2 class="text-4xl font-bold mb-6 text-shadow">Cenários de teste</h2>
+      <p class="text-xl mb-8 max-w-4xl">Três cenários de complexidade crescente.</p>
+      <div class="w-full grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-green-100 p-6 rounded-2xl shadow-md border-b-4 border-green-500">
+          <h3 class="font-bold text-xl text-green-800 mb-2">1. Simples</h3>
+          <p class="italic text-gray-700 mb-2">"Qual o código da Petrobras?"</p>
+          <div class="text-xs text-green-600 mb-2">
+            <p><strong>Contexto:</strong> Nenhum contexto injetado</p>
+            <p><strong>Payload:</strong> ~400kb de áudio</p>
+          </div>
+          <p class="text-sm text-green-700">Consulta rápida, processamento mínimo no LLM.</p>
+        </div>
+        <div class="bg-yellow-100 p-6 rounded-2xl shadow-md border-b-4 border-yellow-500">
+          <h3 class="font-bold text-xl text-yellow-800 mb-2">2. Tradicional</h3>
+          <p class="italic text-gray-700 mb-2">"Qual a diferença entre renda fixa e Ibovespa?"</p>
+          <div class="text-xs text-yellow-600 mb-2">
+            <p><strong>Contexto:</strong> Manual do investidor (CVM)</p>
+            <p><strong>Payload:</strong> ~678kb de áudio</p>
+          </div>
+          <p class="text-sm text-yellow-700">Raciocínio moderado, interpretação conceitual.</p>
+        </div>
+        <div class="bg-red-100 p-6 rounded-2xl shadow-md border-b-4 border-red-500">
+          <h3 class="font-bold text-xl text-red-800 mb-2">3. Complexo</h3>
+          <p class="italic text-gray-700 mb-2">"Quais as melhores ações de 2024?"</p>
+          <div class="text-xs text-red-600 mb-2">
+            <p><strong>Contexto:</strong> Dados históricos CSV de 2024</p>
+            <p><strong>Payload:</strong> ~848kb de áudio</p>
+          </div>
+          <p class="text-sm text-red-700">Análise de dados, ordenação e síntese.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 13: O que Medimos? As Métricas Cruciais -->
+  <div id="slide-13" class="slide">
+    <div class="slide-content items-start text-left">
+      <span class="badge badge-blue mb-4">5. Resultados</span>
+      <h2 class="text-4xl font-bold mb-6 text-shadow">Métricas avaliadas</h2>
+      <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="bg-white p-8 rounded-2xl shadow-lg">
+          <h3 class="text-2xl font-bold text-blue-600 mb-4">Perspectiva do Usuário</h3>
+          <p class="text-lg mb-2"><span class="font-bold">Latência (p50, p95, p99):</span> picos importam; pequenas taxas de más experiências já afetam o negócio.</p>
+          <p class="text-lg"><span class="font-bold">Vazão (throughput):</span> quantos usuários simultâneos com qualidade.</p>
+        </div>
+        <div class="bg-white p-8 rounded-2xl shadow-lg">
+          <h3 class="text-2xl font-bold text-blue-600 mb-4">Perspectiva do Negócio (Custo)</h3>
+          <p class="text-lg"><span class="font-bold">Uso de CPU e memória:</span> custo de infraestrutura para operar e escalar.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 13: Visão Geral dos Resultados - O Veredito -->
+  <div id="slide-13" class="slide bg-light">
+    <div class="slide-content">
+      <span class="badge badge-blue mb-4">5. Resultados</span>
+      <h2 class="text-4xl font-bold mb-4 text-shadow">Visão Geral dos Resultados</h2>
+      <div class="bg-white p-6 rounded-xl shadow-lg mb-6 w-full max-w-4xl">
+        <h3 class="text-2xl font-bold text-blue-800">gRPC demonstrou superioridade consistente em performance e
+          eficiência em todos os cenários.</h3>
+      </div>
+      <div class="w-full grid grid-cols-1 md:grid-cols-3 gap-4 items-start mb-6">
+        <div class="bg-white p-4 rounded-xl shadow">
+          <h3 class="text-center font-bold mb-2 text-green-800">Simples</h3>
+          <img src="../../tex/imagens/resultados/5-resultados-simples.png" alt="Resultados - Cenário Simples" class="rounded-lg shadow">
+        </div>
+        <div class="bg-white p-4 rounded-xl shadow">
+          <h3 class="text-center font-bold mb-2 text-blue-800">Tradicional</h3>
+          <img src="../../tex/imagens/resultados/5-resultados-tradicional.png" alt="Resultados - Cenário Tradicional" class="rounded-lg shadow">
+        </div>
+        <div class="bg-white p-4 rounded-xl shadow">
+          <h3 class="text-center font-bold mb-2 text-red-800">Complexo</h3>
+          <img src="../../tex/imagens/resultados/5-resultados-complexo.png" alt="Resultados - Cenário Complexo" class="rounded-lg shadow">
+        </div>
+      </div>
+      <p class="text-2xl font-bold mt-6">Tendência consistente: <span style="color: #d97706;">gRPC (melhor)</span> > <span
+          style="color: #2563eb;">Thrift</span> > <span style="color: #16a34a;">REST (pior)</span></p>
+    </div>
+  </div>
+
+  <!-- Slide 15: Cenário Simples - Visão Geral -->
+  <div id="slide-15" class="slide">
+    <div class="slide-content items-start text-left">
+      <span class="badge badge-green mb-4">Cenário Simples</span>
+      <h2 class="text-4xl font-bold mb-6 text-shadow">Cenário Simples - Visão Geral</h2>
+      <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+        <div>
+          <img src="../../tex/imagens/resultados/5-resultados-simples.png"
+            alt="Resultados Comparativos - Cenário Simples" class="rounded-xl shadow-lg mx-auto mb-4" />
+          <div class="bg-white p-4 rounded-xl shadow-lg">
+            <p class="text-lg text-center"><span class="font-bold">"Qual o código da Petrobras?"</span><br>Consulta rápida, processamento mínimo</p>
+          </div>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-lg">
+          <h3 class="text-xl font-bold text-green-800 mb-4 text-center">Métricas de Desempenho</h3>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead>
+                <tr class="border-b-2 border-gray-300">
+                  <th class="text-left py-2 px-1">Protocolo</th>
+                  <th class="text-right py-2 px-1">Avg (ms)</th>
+                  <th class="text-right py-2 px-1">p95 (ms)</th>
+                  <th class="text-right py-2 px-1">Throughput</th>
+                  <th class="text-right py-2 px-1">CPU (%)</th>
+                  <th class="text-right py-2 px-1">RAM (MB)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="bg-orange-50">
+                  <td class="py-2 px-1 font-bold style="color: #d97706;">gRPC</td>
+                  <td class="text-right py-2 px-1 font-bold">280,60</td>
+                  <td class="text-right py-2 px-1">500,18</td>
+                  <td class="text-right py-2 px-1 font-bold">3.563,80</td>
+                  <td class="text-right py-2 px-1 font-bold">13,10</td>
+                  <td class="text-right py-2 px-1 font-bold">303</td>
+                </tr>
+                <tr class="bg-blue-50">
+                  <td class="py-2 px-1 font-bold style="color: #2563eb;">Thrift</td>
+                  <td class="text-right py-2 px-1">345,87</td>
+                  <td class="text-right py-2 px-1">435,93</td>
+                  <td class="text-right py-2 px-1">2.891,20</td>
+                  <td class="text-right py-2 px-1">14,00</td>
+                  <td class="text-right py-2 px-1">315</td>
+                </tr>
+                <tr class="bg-green-50">
+                  <td class="py-2 px-1 font-bold style="color: #16a34a;">REST</td>
+                  <td class="text-right py-2 px-1">477,25</td>
+                  <td class="text-right py-2 px-1">512,56</td>
+                  <td class="text-right py-2 px-1">2.095,30</td>
+                  <td class="text-right py-2 px-1">18,10</td>
+                  <td class="text-right py-2 px-1">362</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="text-sm text-gray-600 mt-3 text-center">gRPC: <span class="font-bold" style="color: #d97706;">70% melhor latência</span> que REST</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 15A: Cenário Simples - Comparação REST vs gRPC -->
+  <div id="slide-15a" class="slide bg-light">
+    <div class="slide-content items-start text-left">
+      <span class="badge badge-green mb-4">Cenário Simples</span>
+      <h2 class="text-4xl font-bold mb-6 text-shadow">REST vs gRPC - Latência</h2>
+      <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div class="text-center">
+          <h3 class="text-xl font-bold style="color: #16a34a;" mb-4">REST</h3>
+          <img src="../../tex/imagens/resultados/5-resultados-simples-rest-k6.png"
+            alt="Boxplot k6 - Simples REST" class="rounded-xl shadow-lg mx-auto" />
+        </div>
+        <div class="text-center">
+          <h3 class="text-xl font-bold style="color: #d97706;" mb-4">gRPC</h3>
+          <img src="../../tex/imagens/resultados/5-resultados-simples-grpc-k6.png"
+            alt="Boxplot k6 - Simples gRPC" class="rounded-xl shadow-lg mx-auto" />
+        </div>
+      </div>
+      <div class="bg-white p-6 rounded-xl shadow-lg mt-6 w-full">
+        <p class="text-xl text-center"><span class="font-bold" style="color: #d97706;">gRPC:</span> ~70% melhor latência que <span class="font-bold" style="color: #16a34a;">REST</span></p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Slide 15B: Cenário Simples - Comparação gRPC vs Thrift -->
+  <div id="slide-15b" class="slide">
+    <div class="slide-content items-start text-left">
+      <span class="badge badge-green mb-4">Cenário Simples</span>
+      <h2 class="text-4xl font-bold mb-6 text-shadow">gRPC vs Thrift - Latência</h2>
+      <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div class="text-center">
+          <h3 class="text-xl font-bold style="color: #d97706;" mb-4">gRPC</h3>
+          <img src="../../tex/imagens/resultados/5-resultados-simples-grpc-k6.png"
+            alt="Boxplot k6 - Simples gRPC" class="rounded-xl shadow-lg mx-auto" />
+        </div>
+        <div class="text-center">
+          <h3 class="text-xl font-bold style="color: #2563eb;" mb-4">Thrift</h3>
+          <img src="../../tex/imagens/resultados/5-resultados-simples-thrift-k6.png"
+            alt="Boxplot k6 - Simples Thrift" class="rounded-xl shadow-lg mx-auto" />
+        </div>
+      </div>
+      <div class="bg-white p-6 rounded-xl shadow-lg mt-6 w-full">
+        <p class="text-xl text-center"><span class="font-bold" style="color: #d97706;">gRPC:</span> ~15-20% melhor que <span class="font-bold" style="color: #2563eb;">Thrift</span> - Ambos superiores ao REST</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 16: Cenário Tradicional - Visão Geral -->
+  <div id="slide-16" class="slide bg-light">
+    <div class="slide-content items-start text-left">
+      <span class="badge badge-blue mb-4">Cenário Tradicional</span>
+      <h2 class="text-4xl font-bold mb-6 text-shadow">Cenário Tradicional - Visão Geral</h2>
+      <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+        <div>
+          <img src="../../tex/imagens/resultados/5-resultados-tradicional.png"
+            alt="Resultados Comparativos - Cenário Tradicional" class="rounded-xl shadow-lg mx-auto mb-4" />
+          <div class="bg-white p-4 rounded-xl shadow-lg">
+            <p class="text-lg text-center"><span class="font-bold">"Qual a diferença entre renda fixa e Ibovespa?"</span><br>Exige raciocínio e elaboração</p>
+          </div>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-lg">
+          <h3 class="text-xl font-bold text-blue-800 mb-4 text-center">Métricas de Desempenho</h3>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead>
+                <tr class="border-b-2 border-gray-300">
+                  <th class="text-left py-2 px-1">Protocolo</th>
+                  <th class="text-right py-2 px-1">Avg (ms)</th>
+                  <th class="text-right py-2 px-1">p95 (ms)</th>
+                  <th class="text-right py-2 px-1">Throughput</th>
+                  <th class="text-right py-2 px-1">CPU (%)</th>
+                  <th class="text-right py-2 px-1">RAM (MB)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="bg-orange-50">
+                  <td class="py-2 px-1 font-bold style="color: #d97706;">gRPC</td>
+                  <td class="text-right py-2 px-1 font-bold">2.749,80</td>
+                  <td class="text-right py-2 px-1">3.401,73</td>
+                  <td class="text-right py-2 px-1 font-bold">363,70</td>
+                  <td class="text-right py-2 px-1 font-bold">48,80</td>
+                  <td class="text-right py-2 px-1 font-bold">680</td>
+                </tr>
+                <tr class="bg-blue-50">
+                  <td class="py-2 px-1 font-bold style="color: #2563eb;">Thrift</td>
+                  <td class="text-right py-2 px-1">2.897,87</td>
+                  <td class="text-right py-2 px-1">3.923,65</td>
+                  <td class="text-right py-2 px-1">345,10</td>
+                  <td class="text-right py-2 px-1">52,20</td>
+                  <td class="text-right py-2 px-1">711</td>
+                </tr>
+                <tr class="bg-green-50">
+                  <td class="py-2 px-1 font-bold style="color: #16a34a;">REST</td>
+                  <td class="text-right py-2 px-1">3.501,06</td>
+                  <td class="text-right py-2 px-1">5.175,86</td>
+                  <td class="text-right py-2 px-1">285,60</td>
+                  <td class="text-right py-2 px-1">69,90</td>
+                  <td class="text-right py-2 px-1">846</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="text-sm text-gray-600 mt-3 text-center">gRPC mantém <span class="font-bold style="color: #d97706;">vantagem consistente</span> em todos os aspectos</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 16A: Cenário Tradicional - Comparação REST vs gRPC -->
+  <div id="slide-16a" class="slide">
+    <div class="slide-content items-start text-left">
+      <span class="badge badge-blue mb-4">Cenário Tradicional</span>
+      <h2 class="text-4xl font-bold mb-6 text-shadow">REST vs gRPC - Latência</h2>
+      <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div class="text-center">
+          <h3 class="text-xl font-bold style="color: #16a34a;" mb-4">REST</h3>
+          <img src="../../tex/imagens/resultados/5-resultados-tradicional-rest-k6.png"
+            alt="Boxplot k6 - Tradicional REST" class="rounded-xl shadow-lg mx-auto" />
+        </div>
+        <div class="text-center">
+          <h3 class="text-xl font-bold style="color: #d97706;" mb-4">gRPC</h3>
+          <img src="../../tex/imagens/resultados/5-resultados-tradicional-grpc-k6.png"
+            alt="Boxplot k6 - Tradicional gRPC" class="rounded-xl shadow-lg mx-auto" />
+        </div>
+      </div>
+      <div class="bg-white p-6 rounded-xl shadow-lg mt-6 w-full">
+        <p class="text-xl text-center"><span class="font-bold style="color: #d97706;">gRPC:</span> Mantém vantagem consistente sobre <span class="font-bold style="color: #16a34a;">REST</span></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 16B: Cenário Tradicional - Comparação gRPC vs Thrift -->
+  <div id="slide-16b" class="slide bg-light">
+    <div class="slide-content items-start text-left">
+      <span class="badge badge-blue mb-4">Cenário Tradicional</span>
+      <h2 class="text-4xl font-bold mb-6 text-shadow">gRPC vs Thrift - Latência</h2>
+      <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div class="text-center">
+          <h3 class="text-xl font-bold style="color: #d97706;" mb-4">gRPC</h3>
+          <img src="../../tex/imagens/resultados/5-resultados-tradicional-grpc-k6.png"
+            alt="Boxplot k6 - Tradicional gRPC" class="rounded-xl shadow-lg mx-auto" />
+        </div>
+        <div class="text-center">
+          <h3 class="text-xl font-bold style="color: #2563eb;" mb-4">Thrift</h3>
+          <img src="../../tex/imagens/resultados/5-resultados-tradicional-thrift-k6.png"
+            alt="Boxplot k6 - Tradicional Thrift" class="rounded-xl shadow-lg mx-auto" />
+        </div>
+      </div>
+      <div class="bg-white p-6 rounded-xl shadow-lg mt-6 w-full">
+        <p class="text-xl text-center">Protocolos binários: <span class="font-bold style="color: #d97706;">gRPC</span> (HTTP/2) vs <span class="font-bold style="color: #2563eb;">Thrift</span> (protocolo próprio)</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 17: Cenário Complexo - Visão Geral -->
+  <div id="slide-17" class="slide">
+    <div class="slide-content items-start text-left">
+      <span class="badge badge-red mb-4">Cenário Complexo</span>
+      <h2 class="text-4xl font-bold mb-6 text-shadow">Cenário Complexo - Visão Geral</h2>
+      <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+        <div>
+          <img src="../../tex/imagens/resultados/5-resultados-complexo.png"
+            alt="Resultados Comparativos - Cenário Complexo" class="rounded-xl shadow-lg mx-auto mb-4" />
+          <div class="bg-white p-4 rounded-xl shadow-lg">
+            <p class="text-lg text-center"><span class="font-bold">"Quais as melhores ações de 2024?"</span><br>Análise de dados e processamento intenso</p>
+          </div>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-lg">
+          <h3 class="text-xl font-bold text-red-800 mb-4 text-center">Métricas de Desempenho</h3>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead>
+                <tr class="border-b-2 border-gray-300">
+                  <th class="text-left py-2 px-1">Protocolo</th>
+                  <th class="text-right py-2 px-1">Avg (ms)</th>
+                  <th class="text-right py-2 px-1">p95 (ms)</th>
+                  <th class="text-right py-2 px-1">Throughput</th>
+                  <th class="text-right py-2 px-1">CPU (%)</th>
+                  <th class="text-right py-2 px-1">RAM (MB)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="bg-orange-50">
+                  <td class="py-2 px-1 font-bold style="color: #d97706;">gRPC</td>
+                  <td class="text-right py-2 px-1 font-bold">5.462,68</td>
+                  <td class="text-right py-2 px-1">5.490,84</td>
+                  <td class="text-right py-2 px-1 font-bold">183,10</td>
+                  <td class="text-right py-2 px-1 font-bold">98,60</td>
+                  <td class="text-right py-2 px-1 font-bold">1.167</td>
+                </tr>
+                <tr class="bg-blue-50">
+                  <td class="py-2 px-1 font-bold style="color: #2563eb;">Thrift</td>
+                  <td class="text-right py-2 px-1">5.721,15</td>
+                  <td class="text-right py-2 px-1">6.000,76</td>
+                  <td class="text-right py-2 px-1">174,80</td>
+                  <td class="text-right py-2 px-1" style="color: #16a34a;">106,10</td>
+                  <td class="text-right py-2 px-1">1.225</td>
+                </tr>
+                <tr class="bg-green-50">
+                  <td class="py-2 px-1 font-bold style="color: #16a34a;">REST</td>
+                  <td class="text-right py-2 px-1">6.000,97</td>
+                  <td class="text-right py-2 px-1">6.001,84</td>
+                  <td class="text-right py-2 px-1">166,60</td>
+                  <td class="text-right py-2 px-1 font-bold" style="color: #16a34a;">138,20</td>
+                  <td class="text-right py-2 px-1">1.426</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="text-sm text-gray-600 mt-3 text-center">REST: <span class="font-bold style="color: #16a34a;">Saturação</span> (138% CPU) vs gRPC: <span class="font-bold style="color: #d97706;">Viável</span> (98% CPU)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 17A: Cenário Complexo - Comparação REST vs gRPC -->
+  <div id="slide-17a" class="slide bg-light">
+    <div class="slide-content items-start text-left">
+      <span class="badge badge-red mb-4">Cenário Complexo</span>
+      <h2 class="text-4xl font-bold mb-6 text-shadow">REST vs gRPC - Latência</h2>
+      <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div class="text-center">
+          <h3 class="text-xl font-bold style="color: #16a34a;" mb-4">REST</h3>
+          <img src="../../tex/imagens/resultados/5-resultados-complexo-rest-k6.png"
+            alt="Boxplot k6 - Complexo REST" class="rounded-xl shadow-lg mx-auto" />
+        </div>
+        <div class="text-center">
+          <h3 class="text-xl font-bold style="color: #d97706;" mb-4">gRPC</h3>
+          <img src="../../tex/imagens/resultados/5-resultados-complexo-grpc-k6.png"
+            alt="Boxplot k6 - Complexo gRPC" class="rounded-xl shadow-lg mx-auto" />
+        </div>
+      </div>
+      <div class="bg-white p-6 rounded-xl shadow-lg mt-6 w-full">
+        <p class="text-xl text-center"><span class="font-bold style="color: #16a34a;">REST:</span> Saturação (138% CPU) vs <span class="font-bold style="color: #d97706;">gRPC:</span> Limite viável (98% CPU)</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 17B: Cenário Complexo - Comparação gRPC vs Thrift -->
+  <div id="slide-17b" class="slide">
+    <div class="slide-content items-start text-left">
+      <span class="badge badge-red mb-4">Cenário Complexo</span>
+      <h2 class="text-4xl font-bold mb-6 text-shadow">gRPC vs Thrift - Eficiência</h2>
+      <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div class="text-center">
+          <h3 class="text-xl font-bold style="color: #d97706;" mb-4">gRPC</h3>
+          <img src="../../tex/imagens/resultados/5-resultados-complexo-grpc-k6.png"
+            alt="Boxplot k6 - Complexo gRPC" class="rounded-xl shadow-lg mx-auto" />
+        </div>
+        <div class="text-center">
+          <h3 class="text-xl font-bold style="color: #2563eb;" mb-4">Thrift</h3>
+          <img src="../../tex/imagens/resultados/5-resultados-complexo-thrift-k6.png"
+            alt="Boxplot k6 - Complexo Thrift" class="rounded-xl shadow-lg mx-auto" />
+        </div>
+      </div>
+      <div class="bg-white p-6 rounded-xl shadow-lg mt-6 w-full">
+        <p class="text-xl text-center">Ambos viáveis para produção: <span class="font-bold style="color: #d97706;">gRPC</span> ligeiramente superior a <span class="font-bold style="color: #2563eb;">Thrift</span></p>
+      </div>
+    </div>
+  </div>
+
+  <div id="slide-18" class="slide">
+    <div class="slide-content">
+      <span class="badge badge-blue mb-4">6. Conclusões</span>
+      <h2 class="text-4xl font-bold mb-6 text-shadow">Resposta à pergunta</h2>
+      <div class="w-full max-w-5xl text-left space-y-6">
+        <div class="bg-green-100 p-6 rounded-xl shadow-md">
+          <p class="text-xl"><span class="font-bold text-green-800">gRPC e Thrift:</span> Superiores para fluxos
+            críticos e de alta intensidade. Menor latência, maior eficiência e custo operacional reduzido.</p>
+        </div>
+        <div class="bg-red-100 p-6 rounded-xl shadow-md">
+          <p class="text-xl"><span class="font-bold text-red-800">REST:</span> Válido pela simplicidade e
+            interoperabilidade, mas com um alto custo em performance e infraestrutura sob carga.</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-blue-500 mt-6">
+          <h3 class="text-xl font-bold text-center">Principal Trade-off</h3>
+          <p class="text-xl text-center mt-2">Simplicidade de Implementação <span class="font-bold">(REST)</span> vs.
+            Eficiência e Custo <span class="font-bold">(gRPC/Thrift)</span>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 18: Contribuições da Pesquisa -->
+  <div id="slide-18" class="slide bg-dark text-white">
+    <div class="slide-content items-start text-left">
+      <span class="badge badge-blue mb-4">6. Conclusões</span>
+      <h2 class="text-4xl font-bold mb-8 text-shadow">Contribuições da Pesquisa</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 w-full">
+        <div class="bg-gray-800 border border-blue-400 p-8 rounded-2xl shadow-lg">
+          <h3 class="text-2xl font-bold text-blue-300 mb-4">Para a Indústria (Prática)</h3>
+          <ul class="list-disc list-inside text-lg space-y-2">
+            <li>Modelo de experimentação <span class="font-bold">replicável</span> (disponível no GitHub).</li>
+            <li>Base para uma <span class="font-bold">matriz de decisão</span> para arquitetos de software no setor
+              financeiro.</li>
+          </ul>
+        </div>
+        <div class="bg-gray-800 border border-blue-400 p-8 rounded-2xl shadow-lg">
+          <h3 class="text-2xl font-bold text-blue-300 mb-4">Para a Academia (Teórica)</h3>
+          <ul class="list-disc list-inside text-lg space-y-2">
+            <li>Preenche uma <span class="font-bold">lacuna na literatura</span> com a primeira análise experimental
+              abrangente.</li>
+            <li>Valida o impacto dos protocolos em um contexto de <span class="font-bold">IA multimodal</span> para
+              finanças.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 19: Repositório GitHub - Código Aberto -->
+  <div id="slide-19" class="slide bg-light">
+    <div class="slide-content items-start text-left">
+      <span class="badge badge-green mb-4">Contribuições Práticas</span>
+      <h2 class="text-4xl font-bold mb-6 text-shadow">Repositório GitHub - Código Aberto</h2>
+      <p class="text-xl mb-6 max-w-4xl">Todos os experimentos, códigos e dados estão disponíveis publicamente para replicação e extensão.</p>
+
+      <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div class="text-center">
+          <img src="../imagens/github_repo.png" alt="Repositório GitHub" class="rounded-xl shadow-lg mx-auto max-h-[500px]" />
+        </div>
+
+        <div class="space-y-6">
+          <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-green-500">
+            <h3 class="font-bold text-xl text-green-700 mb-3">Conteúdo Disponível:</h3>
+            <ul class="list-disc list-inside text-lg space-y-2 text-gray-700">
+              <li><strong>Código completo</strong> das 3 implementações</li>
+              <li><strong>Scripts de teste</strong> e ambiente Docker</li>
+              <li><strong>Dados brutos</strong> dos 135 experimentos</li>
+            </ul>
+          </div>
+
+          <div class="bg-blue-50 p-6 rounded-xl shadow-lg border-l-4 border-blue-500">
+            <h3 class="font-bold text-xl text-blue-700 mb-3">Impacto:</h3>
+            <ul class="list-disc list-inside text-lg space-y-2 text-gray-700">
+              <li><strong>Metodologia replicável</strong></li>
+              <li><strong>Benchmark de referência</strong></li>
+              <li><strong>Licença CC BY-SA 4.0</strong></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 20: Analisador de Resultados - Jupyter Notebook -->
+  <div id="slide-20" class="slide">
+    <div class="slide-content items-start text-left">
+      <span class="badge badge-purple mb-4">Ferramentas de Análise</span>
+      <h2 class="text-4xl font-bold mb-6 text-shadow">Analisador de Resultados - Jupyter Notebook</h2>
+      <p class="text-xl mb-6 max-w-4xl">Ferramenta interativa para análise estatística e geração automática de gráficos dos experimentos.</p>
+
+      <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div class="text-center">
+          <img src="../imagens/reports_jupyter_notebook.png" alt="Jupyter Notebook de Análise" class="rounded-xl shadow-lg mx-auto max-h-[500px]" />
+        </div>
+
+        <div class="space-y-6">
+          <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-purple-500">
+            <h3 class="font-bold text-xl text-purple-700 mb-3">Funcionalidades:</h3>
+            <ul class="list-disc list-inside text-lg space-y-2 text-gray-700">
+              <li><strong>Análise estatística</strong> completa (ANOVA)</li>
+              <li><strong>Geração automática</strong> de gráficos</li>
+              <li><strong>Exportação</strong> de resultados</li>
+            </ul>
+          </div>
+
+          <div class="bg-orange-50 p-6 rounded-xl shadow-lg border-l-4 border-orange-500">
+            <h3 class="font-bold text-xl text-orange-700 mb-3">Análises:</h3>
+            <ul class="list-disc list-inside text-lg space-y-2 text-gray-700">
+              <li><strong>Comparações</strong> por protocolo e cenário</li>
+              <li><strong>Testes de significância</strong> estatística</li>
+              <li><strong>Visualizações interativas</strong></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 21: Limitações e Trabalhos Futuros -->
+  <div id="slide-21" class="slide">
+    <div class="slide-content">
+      <h2 class="text-4xl font-bold mb-8 text-shadow">Limitações e Trabalhos Futuros</h2>
+      <div class="w-full max-w-4xl text-left bg-white p-8 rounded-2xl shadow-lg">
+        <h3 class="text-2xl font-bold text-blue-600 mb-4">Limitações</h3>
+        <ul class="list-disc list-inside text-lg space-y-2 mb-6">
+          <li>Ambiente <span class="font-bold">controlado</span>; não mede variáveis de produção (rede, jitter, autoscaling).</li>
+          <li>Foco em <span class="font-bold">comunicação síncrona</span>; assíncrona/event-driven fora do escopo.</li>
+          <li>Protocolos avaliados: <span class="font-bold">REST, gRPC e Thrift</span>; sem GraphQL/WebSockets.</li>
+          <li>Modelos específicos (Whisper, Llama3.1, Bark); outras combinações não avaliadas.</li>
+          <li>Segurança e compliance (mTLS, authn/z) não avaliados do ponto de vista de <span class="font-bold">overhead</span>.</li>
+        </ul>
+
+        <h3 class="text-2xl font-bold text-blue-600 mb-4">Trabalhos Futuros</h3>
+        <ul class="list-disc list-inside text-lg space-y-2">
+          <li>Service Mesh (Istio/Linkerd): impacto em latência, resiliência e observabilidade.</li>
+          <li>Comunicação <span class="font-bold">assíncrona</span> (Kafka) e padrões de orquestração (sagas/outbox).</li>
+          <li>gRPC <span class="font-bold">streaming</span>, HTTP/3/QUIC e compressão para payloads de áudio.</li>
+          <li>Escalabilidade: HPA, autoscaling sob carga variável e efeitos de <em>noisy neighbor</em>.</li>
+          <li>Custos em nuvem e <span class="font-bold">trade-offs</span> de infraestrutura (CPU/GPU, co-location).</li>
+          <li>Segurança: mTLS, autorização e <span class="font-bold">overhead</span> de políticas.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 22: Perguntas -->
+  <div id="slide-22" class="slide bg-dark text-white">
+    <div class="slide-content">
+      <h2 class="text-6xl font-black mb-8 text-shadow">Obrigado!</h2>
+      <p class="text-4xl font-bold mb-12 text-shadow">Perguntas?</p>
+      <div class="text-xl text-gray-300">
+        <p>Luiz Silva dos Santos Júnior</p>
+        <p class="mt-2">lssj@cesar.school</p>
+        <p class="mt-4 text-blue-400 font-mono">github.com/luizjr8/mpes-lssj-analise-orquestracao-microsservicos</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="slide-counter"></div>
+
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    let currentSlide = 0;
+    const slideCounter = document.getElementById('slide-counter');
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.remove('active');
+        if (i === index) {
+          slide.classList.add('active');
+        }
+      });
+      updateCounter();
+    }
+
+    function updateCounter() {
+      slideCounter.textContent = `${currentSlide + 1} / ${slides.length}`;
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    }
+
+    function prevSlide() {
+      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+      showSlide(currentSlide);
+    }
+
+    function toggleFullScreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        }
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+        nextSlide();
+      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        prevSlide();
+      } else if (e.key.toLowerCase() === 'f') {
+        toggleFullScreen();
+      }
+    });
+
+    showSlide(currentSlide);
+  </script>
+</body>
+
+</html>

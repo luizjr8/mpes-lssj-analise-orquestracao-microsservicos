@@ -1,0 +1,73 @@
+\newcommand{\chaptertitle}{}
+\let\oldchapter\chapter
+\renewcommand{\chapter}[1]{%
+  \renewcommand{\chaptertitle}{#1}%
+  \oldchapter{#1}%
+}
+\chapter{Introdução}
+
+Este capítulo apresenta o panorama geral da pesquisa, delineando a motivação e o contexto que impulsionaram o estudo. A pergunta de pesquisa central será discutida, acompanhada da justificativa que ressalta sua relevância no cenário atual. Serão detalhados os objetivos gerais e específicos a serem alcançados e, por fim, a estrutura da dissertação será apresentada, oferecendo um roteiro dos temas abordados nos capítulos subsequentes.
+
+\section{Motivação e Contexto}
+
+O setor financeiro global atravessa uma fase de intensa transformação digital, impulsionada pela necessidade de otimizar operações, personalizar serviços e atender a um cliente cada vez mais exigente \cite{finn_what_2024}. Nesse contexto, a \gls{ia}, especialmente a \gls{ia} generativa, se destaca como uma tecnologia disruptiva, com projeções de investimento que podem agregar entre USD\$2.6 trilhões e USD\$4.4 trilhões anualmente à economia global \cite{mckinsey_economic_2023}. As instituições financeiras estão implementando \gls{ia} para automatizar tarefas complexas, como análise de risco, detecção de fraudes e oferta de consultoria de investimentos personalizada por meio de assistentes virtuais \cite{finn_what_2024}.
+
+Esses assistentes virtuais, também conhecidos como agentes conversacionais, evoluíram de simples chatbots para plataformas multimodais sofisticadas. Eles são capazes de processar interações por meio de voz e texto, realizando tarefas como consulta de cotações, análise de portfólio e atendimento ao cliente. No Brasil, existem alguns exemplos proeminentes destes agentes, como a 
+\textbf{Bia}\footnote{Disponível em: \url{https://banco.bradesco/bia/}. Acesso em: 19 jun. 2025.} (Bradesco Inteligência Artificial) do Bradesco, uma assistente virtual multimodal que atua respondendo a milhões de perguntas por mês, auxiliando em transações e interagindo via voz e texto em diversos canais. Outras empresas, como a fintech \textbf{Magnetis}\footnote{Disponível em: \url{https://exame.com/pme/fintech-de-investimentos-magnetis-recebe-aporte-de-r-60-milhoes/}. Acesso em: 19 de jun. 2025}, utilizam a \gls{ia} para oferecer consultoria de investimentos personalizada, automatizando a gestão de carteiras e a alocação de ativos com base no perfil de risco do investidor. Entretanto, a sofisticação desses sistemas, que dependem de \gls{llm}, requer um poder computacional intensivo, o que impõe custos operacionais significativos e gera desafios tecnológicos e de negócios.
+
+Para suportar a complexidade e a escalabilidade exigidas por essas aplicações de \gls{ia}, a arquitetura de microsserviços tem sido amplamente adotada como uma alternativa superior às arquiteturas monolíticas tradicionais \cite{newman_building_2022}. Ao decompor uma aplicação complexa em um conjunto de serviços menores, independentes e especializados, a abordagem de microsserviços proporciona maior flexibilidade, resiliência e agilidade no desenvolvimento e na implantação \cite{fowler_microsservicos_2022}. Entretanto, a implementação de sistemas distribuídos desse tipo introduz desafios específicos, como a orquestração eficiente dos serviços, a garantia de segurança e consistência dos dados, além do controle da latência percebida pelo usuário. Esses aspectos são particularmente críticos em ambientes financeiros, nos quais agilidade e confiabilidade são essenciais.
+
+A sofisticação dos sistemas de \gls{ia}, que dependem desses novos modelos generativos, impõe um alto custo computacional. A simples execução de um modelo exige que bilhões de parâmetros sejam carregados na memória. Para carregar o modelo Llama 2 com 7 bilhões de parâmetros, por exemplo, são necessários mais de 14 GB de VRAM apenas para os pesos do modelo em precisão de 16 bits, antes mesmo de alocar memória para o contexto da inferência.
+
+O desafio é amplificado em assistentes virtuais multimodais, que manipulam tipos de dados inerentemente pesados. Um serviço de transcrição de áudio baseado no modelo Whisper da OpenAI, por exemplo, precisa lidar com grandes volumes de dados. Um único minuto de áudio mono, não comprimido e com qualidade de 16 bits a 16kHz, pode gerar um payload de quase 2 MB a ser trafegado pela rede. Adicionalmente, o próprio modelo Whisper (versão large) exige cerca de 10 GB de VRAM para operar de forma eficiente durante a transcrição. Essa combinação de alto consumo de memória para manter os modelos carregados, processamento intensivo e grandes volumes de dados trafegados pressiona diretamente a camada de comunicação da arquitetura.
+
+\section{Pergunta de pesquisa}
+
+Diante do desafio de construir sistemas de \gls{ia} responsivos e economicamente viáveis, onde a comunicação entre os componentes é um fator crítico, este estudo busca responder à seguinte questão:
+
+\textbf{Qual é a efetividade comparativa das tecnologias de orquestração populares na implementação de redes descentralizadas de microsserviços para assistentes virtuais multimodais no setor financeiro, considerando critérios de performance e latência?}
+
+A resposta a essa questão central será obtida por meio de uma análise sistemática de três tecnologias, uma vez que a escolha da arquitetura de comunicação entre microsserviços é determinante para o desempenho e a eficiência dos sistemas. A avaliação comparativa permitirá identificar a abordagem que atende de forma mais eficaz às exigências do setor, equilibrando escalabilidade, velocidade e consumo de recursos.
+
+
+\section{Justificativa}
+
+A relevância desta pesquisa reside na intercessão entre três tendências de alto impacto: a ascensão da \gls{ia} generativa, a adoção de arquiteturas de microsserviços e a acelerada transformação digital do setor financeiro. Neste contexto, a escolha do protocolo de comunicação (como \gls{rest}, \gls{grpc} e Thrift) emerge como uma decisão arquitetural fundamental, com implicações diretas na performance, custo e capacidade de inovação dos sistemas. Embora estudos anteriores tenham investigado protocolos em contextos genéricos \cite{niswar_performance_2024}, a aplicação específica a arquiteturas multimodais de \gls{ia} -- com seus requisitos singulares de baixíssima latência e alto \textit{throughput} -- permanece uma lacuna na literatura, que este trabalho busca preencher.
+
+Essa carência é particularmente crítica dado o perfil único do mercado financeiro. O processamento sequencial de grandes volumes de dados multimodais exige padrões rigorosos de estabilidade e confiabilidade, sob pena de comprometer toda a cadeia de valor. Não por acaso, o setor investiu R\$ 47,4 bilhões em tecnologia apenas em 2024 \cite{febraban-federacao_brasileira_de_bancos_pesquisa_nodate, arditti_microsservicos_2025}, sinalizando uma corrida por soluções seguras, personalizadas e, acima de tudo, eficientes.
+
+Nesse sentido, arquitetos de software que atuam no setor financeiro dependem não apenas de serviços resilientes e escaláveis, mas também de métricas concretas que orientem suas decisões. A incapacidade de garantir esses atributos não se resume a meros inconvenientes: em um ambiente onde transações são processadas em milissegundos, latência excessiva ou instabilidade podem resultar em perdas financeiras significativas e, não menos importante, na erosão da confiança do cliente e, consequentemente, na perda de negócios para concorrentes mais ágeis. Portanto, uma análise comparativa abrangente que considere desempenho técnico (latência, vazão) e eficiência de recursos (CPU, memória) é crucial, fornecendo dados empíricos necessários para mitigar esses riscos e alinhar a modernização tecnológica às exigências rigorosas do mercado.
+
+\section{Objetivos Gerais e Específicos}
+
+O objetivo geral desta dissertação é realizar uma análise comparativa de diferentes tecnologias de orquestração de microsserviços, com foco em performance e latência. Essa análise visa avaliar a efetividade das tecnologias na implementação de redes descentralizadas para assistentes virtuais multimodais no setor financeiro.
+
+Os objetivos específicos desta pesquisa são:
+\begin{enumerate}
+\item \textbf{Estudo dos pilares teóricos}: Realizar um estudo aprofundado sobre as principais tecnologias de microsserviço e orquestração, compreendendo seus conceitos, padrões de comunicação, escalabilidade e observabilidade.
+\item \textbf{Avaliação do estado da arte}: Analisar a literatura técnica e acadêmica para entender se análises comparativas anteriores entre as tecnologias de comunicação já foram realizadas, identificando lacunas no conhecimento e garantindo a originalidade e relevância da presente pesquisa.
+\item \textbf{Definir e implementar cenários de teste}: Criar cenários de uso simples, tradicional e complexo, simulando interações de múltiplos usuários com um assistente virtual financeiro, para avaliar o comportamento da arquitetura sob diferentes cenários de uso.
+\item \textbf{Avaliar comparativamente os protocolos}: Utilizar os protocolos \gls{rest}, \gls{grpc} e Apache Thrift para analisar o desempenho da comunicação entre os microsserviços, focando em métricas de latência e \textit{throughput} em cada cenário, evidenciando a qualidade da interação e a capacidade de resposta do sistema.
+
+\item \textbf{Analisar a eficiência de recursos computacionais}: Medir a utilização de CPU e memória dos microsserviços em cada cenário, destacando a escalabilidade do consumo de recursos e os impactos operacionais das diferentes abordagens, para apoiar decisões técnicas que considerem custos e limitações de infraestrutura.
+\end{enumerate}
+
+\section{Estrutura da Dissertação}
+
+A presente dissertação está organizada da seguinte forma:
+\begin{itemize}
+    \item \textbf{\autoref{ch:2pilares}: \nameref{ch:2pilares}} \\
+    Este capítulo apresenta os fundamentos conceituais da pesquisa, detalhando a arquitetura de microsserviços, seus padrões de comunicação, escalabilidade e observabilidade. Adicionalmente, explora o funcionamento de assistentes virtuais e o impacto da \acrfull{ia} generativa.
+
+    \item \textbf{\autoref{ch:3estado_da_arte}: \nameref{ch:3estado_da_arte}} \\
+    Este capítulo realiza uma revisão da literatura, analisando o estado da arte em arquiteturas de microsserviços, métricas de avaliação de qualidade de software, estudos comparativos de protocolos de comunicação e as principais ferramentas e abordagens para a orquestração.
+
+    \item \textbf{\autoref{ch:4metodologia}: \nameref{ch:4metodologia}} \\
+    Descreve em detalhes a metodologia empregada na pesquisa. São abordados a caracterização do estudo, as etapas da pesquisa, o design do ambiente experimental, os protocolos de comunicação avaliados, os cenários de teste e as métricas utilizadas para a coleta e análise dos dados.
+
+    \item \textbf{\autoref{ch:5resultados}: \nameref{ch:5resultados}} \\
+    Neste capítulo, são apresentados e discutidos os resultados obtidos no estudo experimental. A análise abrange o desempenho dos protocolos em diferentes cenários, a latência por segmento, a escalabilidade, a eficiência operacional e uma comparação com os achados de trabalhos anteriores.
+
+    \item \textbf{\autoref{ch:6conclusoes}: \nameref{ch:6conclusoes}} \\
+    O último capítulo apresenta as conclusões da pesquisa, sintetizando os resultados e destacando as contribuições da pesquisa. Também são discutidas as limitações do estudo e apontadas direções para trabalhos futuros.
+\end{itemize}
