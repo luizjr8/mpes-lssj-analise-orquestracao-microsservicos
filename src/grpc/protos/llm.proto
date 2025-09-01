@@ -1,0 +1,22 @@
+syntax = "proto3";
+package mpes.llm;
+
+service LLMService {
+  rpc Generate(GenRequest) returns (GenReply);
+}
+
+message GenRequest {
+  string prompt = 1;
+  int32 max_tokens = 2;
+  float temperature = 3;
+  float top_p = 4;
+  int32 top_k = 5;
+  float repeat_penalty = 6;
+  float presence_penalty = 7;
+  float frequency_penalty = 8;
+}
+
+message GenReply {
+  string generated = 1;
+  string error = 2;
+}

@@ -1,0 +1,5 @@
+python-multipart
+httpx
+fastapi
+uvicorn
+pydantic

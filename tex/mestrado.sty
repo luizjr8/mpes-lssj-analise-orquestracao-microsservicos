@@ -1,0 +1,135 @@
+% -- Codificação e idioma
+\usepackage[T1]{fontenc}          % Codificação da fonte para saída correta de caracteres
+\usepackage[brazil]{babel}        % Tradução de elementos (ex: "Capítulo") e hifenização para PT-BR
+\usepackage{csquotes}             % Citações com aspas tipográficas corretas
+\usepackage{lastpage}             % Total de Páginas
+
+% -- Tipografia
+\usepackage{fontspec}             % Permite uso de fontes TrueType/OpenType
+\usepackage{microtype}            % Melhora a justificação do texto
+\usepackage{setspace}             % Espaçamentos entre linhas
+
+% Tabela longa (para o Apêndice)
+\usepackage{longtable}
+
+% -- Fonte
+% \renewcommand*\familydefault{\sfdefault}
+\setmainfont[
+  Path=fontes/,
+  Ligatures=TeX,
+  AutoFakeSlant=0.20,
+  BoldFont=NewsGotTBold.ttf
+]{NewsGotT.ttf}
+\newfontfamily\NewsGotTLight[Path=fontes/]{NewsGotTLight.ttf}
+\MakeOuterQuote{"}              % Aspas corretas
+
+% -- Bibliografia (estilos)
+
+% -- Todos
+\usepackage{todonotes}
+\setlength {\marginparwidth }{2cm}
+\presetkeys{todonotes}{author=TODO}{}
+
+% -- Layout
+\usepackage[a4paper, left=30mm, right=20mm, top=25mm, bottom=30mm]{geometry}
+
+% -- Links, referências e glossário
+\usepackage[hidelinks]{hyperref}  % Links clicáveis sem caixas coloridas
+\hypersetup{                      % Cores dos links
+  colorlinks=true,
+  linkcolor=links,
+  citecolor=links,
+  urlcolor=links
+}
+\hypersetup{
+  pdftitle={Orquestração de Microsserviços para Assistentes Virtuais Multimodais},
+  pdfauthor={Luiz Silva dos Santos Júnior},
+  pdfcreator={Luiz Silva dos Santos Júnior},
+  pdfsubject={Dissertação de Mestrado},
+  pdfkeywords={gRPC, Thrift, REST, microsserviços, latência}
+}
+\usepackage[acronyms]{glossaries} % Glossário e acrônimos
+\makeglossaries
+
+% -- Imagens, tabelas e código
+\usepackage{graphicx}             % Inclusão de imagens
+\usepackage{subcaption}           % Subfiguras
+\usepackage{adjustbox}            % Ajuste de caixas (ex: redimensionar figuras/tabelas)
+\usepackage{float}                % Controle de posicionamento de figuras/tabelas (ex: [H])
+\usepackage{wrapfig}              % Figuras com texto ao redor
+\usepackage{listings}             % Código fonte com realce de sintaxe
+\usepackage{multirow}             % Linhas mescladas em tabelas
+\usepackage{tabularx}             % Tabelas com colunas de largura proporcional
+\usepackage{caption}              % Customização de legendas
+\usepackage{chngcntr}             % Controle de contadores (ex: remover numeração por capítulo)
+
+% -- Outros utilitários
+\usepackage{url}                 % URLs formatadas corretamente
+\urlstyle{same}
+\usepackage{datetime}            % Controle de formatação de data/hora
+\usepackage{afterpage}           % Inserir comandos após a próxima quebra de página
+\usepackage{titlesec}            % Customização de títulos
+\usepackage{titling}             % Controle avançado da página de título
+\usepackage{tcolorbox}           % Caixas coloridas para destaque
+\usepackage{leading}             % Controle da altura da linha tipográfica
+\usepackage{hyphenat}            % Controle de hifenização
+\usepackage[dvipsnames,table]{xcolor}  % Suporte a cores
+% FLuxo
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,shapes,fit}
+% -- Cores customizadas em RGB
+\definecolor{links}{RGB}{0,0,140}
+
+% -- Títulos
+\titleformat{\part}[display]{\relax}
+  {\centering\huge\bfseries\partname~\thepart}{0ex}
+  {\centering\Huge\vspace{0ex}\bfseries}
+
+\newcommand{\normal}{  
+  \titleformat{\chapter}[display]
+    {\relax}
+    {\Large\bfseries\chaptername~\thechapter}
+    {0ex}
+    {\LARGE\vspace{0ex}\bfseries}
+}
+
+\newcommand{\capitulos}{
+  \titleformat{\chapter}[block]
+    {\normalfont\bfseries}
+    {
+      \begin{tabular*}{\textwidth}{@{}p{0.75\textwidth}@{\extracolsep{\fill}}>{\raggedleft\arraybackslash}m{60pt}@{}}
+        \Huge\MakeUppercase{\chaptertitle} & \fontsize{60}{60}\selectfont\thechapter
+      \end{tabular*}
+    }
+    {0pt}
+    {\color{white}}
+}
+
+\titleformat{\section}{\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection}{1em}{}
+
+% -- Cabeçalho
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{} % limpa cabeçalhos e rodapés
+
+% Linha horizontal em toda a largura do texto
+\renewcommand{\headrulewidth}{0.2pt}
+\renewcommand{\headrule}{\hbox to\textwidth{\hrulefill}}
+
+\fancyhead[R]{%
+  \makebox[0pt][r]{\thechapter.~\MakeUppercase{\leftmark}}%
+}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+
+% Rodapé central com número da página e barra fina acima
+\fancyfoot[C]{{\thepage}}
+
+% -- Data
+\def\myear{\ifcase\month\or
+  Janeiro\or Fevereiro\or Março\or Abril\or Maio\or Junho\or
+  Julho\or Agosto\or Setembro\or Outubro\or Novembro\or Dezembro\fi
+  \space\number\year}
+% -- Rodapé
+\usepackage{footmisc}            % Estilos de rodapé
+\renewcommand{\footnotelayout}{\scriptsize}  % Tamanho da fonte do rodapé

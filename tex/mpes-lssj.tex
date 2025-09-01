@@ -1,0 +1,82 @@
+\documentclass[12pt,a4paper,brazil]{report}
+\usepackage{mestrado}
+
+% Bibliografia
+\usepackage[style=abnt,backref,noslsn,language=brazilian]{biblatex}
+\addbibresource{zotero.bib}
+% \addbibresource{mendeley.bib}
+% \addbibresource{referencias_manuais.bib}
+
+% Variáveis
+\author{Luiz Silva dos Santos Júnior}
+\def\cesar{Centro de Estudos e Sistemas Avançados do Recife - Cesar School}
+\def\programa{Programa de Pós-Graduação em Engenharia de Software}
+\def\mestrado{Mestrado Profissional em Engenharia de Software}
+\def\titulo{Orquestração de Microsserviços para Assistentes Virtuais Multimodais}
+\def\subtitulo{Análise comparativa no contexto do mercado financeiro}
+\def\orientadora{Profª. Drª. Pamela Thays Lins Bezerra}
+
+\begin{document}
+\normal
+\setlength{\parindent}{1em}
+
+%-- Capas
+\newgeometry{left=20mm, right=20mm, top=0mm, bottom=10mm}
+\input{capas/Capa}
+\input{capas/Contracapa}
+\restoregeometry
+
+%-- Document setup
+\pagenumbering{roman}
+
+% Parágrafos para Conteúdos
+\setlength{\parskip}{5pt}
+\setlength{\parindent}{1.5em}
+\onehalfspacing
+
+%-- Preâmbulo
+\input{preambulo/Ficha}
+\input{preambulo/Licenca}
+\input{preambulo/Aprovacao}
+\input{preambulo/Dedicatoria}
+\input{preambulo/Agradecimentos}
+\input{preambulo/Citação}
+\input{preambulo/Resumo}
+\input{preambulo/Abstract}
+
+\phantomsection
+\tableofcontents
+
+\clearpage
+\listoffigures
+
+% List of tables
+\listoftables
+\clearpage
+
+%Acronimos
+\input{preambulo/Acronimos}
+
+\cleardoublepage
+\pagenumbering{arabic}
+\setcounter{page}{15}
+
+%-- Dissertation 
+\capitulos
+\input{capitulos/1.Introducao}
+\input{capitulos/2.PilaresTeoricos}
+\input{capitulos/3.EstadoDaArte}
+\input{capitulos/4.MetodologiaPesquisa}
+\input{capitulos/5.Resultados}
+\input{capitulos/6.Consideracoes}
+
+\normal
+\let\chapter\oldchapter
+\renewcommand{\baselinestretch}{1}
+\printbibliography
+\appendix
+\renewcommand\chaptername{Apêndice}
+
+\input{apêndices/DadosCompletos}
+
+\end{document}

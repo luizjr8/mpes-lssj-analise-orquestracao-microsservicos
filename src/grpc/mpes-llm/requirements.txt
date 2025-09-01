@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+pydantic
+httpx
+llama-cpp-python
+numpy
+torch
+grpcio
+grpcio-tools
+protobuf

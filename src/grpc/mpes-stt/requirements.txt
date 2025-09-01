@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+openai_whisper
+python-multipart
+grpcio
+grpcio-tools
+protobuf
