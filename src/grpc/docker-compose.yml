@@ -1,0 +1,52 @@
+services:
+  mpes-maestro:
+    build:
+      context: .
+      dockerfile: ./maestro/Dockerfile
+    image: mpes-maestro
+    ports:
+      - "7000:7000"
+    environment:
+      - STT_GRPC_ADDR=mpes-stt:50051
+      - LLM_GRPC_ADDR=mpes-llm:50052
+      - TTS_GRPC_ADDR=mpes-tts:50053
+
+  mpes-stt:
+    build:
+      context: .
+      dockerfile: ./mpes-stt/Dockerfile
+    image: mpes-stt
+    ports:
+      - "8000:8000"
+      - "50051:50051"
+    volumes:
+      - ./models:/app/models
+
+  mpes-llm:
+    build:
+      context: .
+      dockerfile: ./mpes-llm/Dockerfile
+    image: mpes-llm
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    ports:
+      - "8001:8001"
+      - "50052:50052"
+    volumes:
+      - ./models:/app/models
+
+  mpes-tts:
+    build:
+      context: .
+      dockerfile: ./mpes-tts/Dockerfile
+    image: mpes-tts
+    ports:
+      - "8002:8002"
+      - "50053:50053"
+    volumes:
+      - ./models:/app/models

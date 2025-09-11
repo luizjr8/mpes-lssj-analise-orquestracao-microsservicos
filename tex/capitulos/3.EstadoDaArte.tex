@@ -1,0 +1,147 @@
+\chapter{Estado da Arte e Trabalhos Relacionados}
+\label{ch:3estado_da_arte}
+
+Neste capítulo, apresenta-se o mapeamento da literatura realizado no âmbito desta pesquisa, conduzido por meio de uma \acrfull{rsl}, seguindo as diretrizes metodológicas propostas por \textcite{scannavino_revisao_2017}. O objetivo central desta revisão consiste em identificar, avaliar e sintetizar os principais estudos publicados sobre a aplicação de arquiteturas de microsserviços em sistemas de \acrfull{ia}, com ênfase especial em aspectos de orquestração e desempenho. Para tanto, foram estabelecidos protocolos rigorosos de busca, seleção e análise de trabalhos, delimitando-se o escopo temático e definindo critérios de elegibilidade que garantissem a relevância e a qualidade científica dos materiais incluídos.
+
+A revisão concentra-se particularmente em investigações que abordam avaliações experimentais de desempenho, testes comparativos de protocolos e métricas de eficiência em comunicações entre serviços, assegurando que a análise aprofunde questões diretamente relacionadas aos objetivos desta dissertação. A \autoref{sec:3-rsl} detalha o processo de revisão sistemática, descrevendo as etapas percorridas, os critérios de inclusão e exclusão adotados e os resultados obtidos em cada fase. Na \autoref{sec:3-sintese-trabalhos}, procede-se à análise crítica dos trabalhos selecionados, discutindo suas contribuições, limitações e relações com o contexto experimental aqui proposto, de modo a posicionar esta pesquisa no estado da arte e justificar sua originalidade e relevância.
+
+\section{Revisão Sistemática da Literatura}
+\label{sec:3-rsl}
+
+Baseando-nos nas técnicas apresentadas por \textcite{scannavino_revisao_2017} e nos objetivos e na área de estudo delimitados no \autoref{ch:2pilares}, formulamos algumas questões de pesquisa para nortear a revisão sistemática da literatura. Essas questões visam identificar trabalhos relevantes já publicados na área, que são considerados referências de estado da arte para esta pesquisa. Estas perguntas são:
+
+\begin{enumerate}
+    \item  Como orquestrar microsserviços de modelos de \gls{ia} generativa?
+    \item  Quais técnicas e métodos são discutidos para a orquestração desses microsserviços?
+    \item  Qual tecnologia é mais adequada para suportar uma alta demanda de trabalho na orquestração de microsserviços?
+\end{enumerate}
+
+\subsection{Estratégia de Busca}
+
+\textbf{BASE DE DADOS}: A estratégia de busca foi planejada para cobrir as principais bases de dados acadêmicas e motores de busca reconhecidos nas áreas de Engenharia de Software e \acrfull{ia}, assegurando uma abrangente cobertura da literatura científica. As plataformas selecionadas, destacadas por sua relevância e pelo volume de publicações qualificadas, incluem:
+\begin{itemize}
+    \item ABCD PBI (\url{https://www.buscaintegrada.usp.br/}): portal de buscas integrado da rede de pesquisa da USP e demais parceiros incluindo CAPES e outras instituições internacionais.
+    \item Science Direct (\url{www.sciencedirect.com}): Uma das maiores bases de dados de literatura científica e técnica, com forte presença em engenharia e computação.
+    \item IEEE Xplore (\url{ieeexplore.ieee.org}): Base de dados do Institute of Electrical and Electronics Engineers, crucial para publicações em engenharia, eletrônica e computação.
+\end{itemize}
+
+\textbf{STRING DE BUSCA}: A estratégia de busca foi construída a partir de um conjunto de palavras-chave em inglês e português, selecionadas para alinhar-se diretamente ao escopo desta dissertação. Utilizando operadores booleanos (AND, OR), buscou-se equilibrar abrangência e especificidade, refinando os resultados para o tema central — desempenho e orquestração de microsserviços em sistemas de \acrfull{ia} aplicados ao setor financeiro. Essa abordagem permitiu capturar a literatura mais relevante, majoritariamente internacional, sem perder de vista contribuições regionais significativas. As strings incluíram combinações como:
+
+\begin{itemize}
+\item "microservices" AND "AI models" AND "communication" AND ("benchmark" OR "comparison" OR "study")
+\item "microservices" AND "orchestration" AND ("REST" OR "gRPC" OR "Apache Thrift") AND "benchmark"
+\item "conversational agents" AND "microservices architecture"
+\item "microservices" AND "AI models" AND "financial"
+\end{itemize}
+
+\textbf{RESULTADOS INICIAIS}: Estabeleceu-se como critério de triagem inicial a análise de \textbf{títulos e resumos (abstracts)} dos estudos recuperados pelas strings de busca, complementado por um filtro temporal que abrangeu o período de 2020 a 2025 para garantir a contemporaneidade dos trabalhos selecionados. Esta estratégia permitiu capturar as evoluções mais recentes nas tecnologias de microsserviços e \gls{ia}. Do volume inicial de documentos identificados, procedeu-se à eliminação de duplicatas, resultando em um corpus preliminar de \textbf{278 publicações únicas} para avaliação de elegibilidade nas etapas subsequentes.
+
+
+\subsubsection{Critérios de Elegibilidade e Seleção}
+
+Após a escolha das bases dados e definição das strings de busca, definiu-se um processo de filtragem e seleção dos trabalhos. Este processo de seleção dos estudos seguiu 4 etapas detalhadas a seguir, assegurando a inclusão apenas dos trabalhos mais relevantes e de alta qualidade científica:
+\begin{enumerate}
+\item \textbf{Identificação}: Nesta fase inicial, foram realizadas as buscas nas bases de dados utilizando as strings de pesquisa definidas. O objetivo foi coletar o maior número possível de documentos potencialmente relevantes.
+\item \textbf{Triagem}: Os resultados brutos foram armazenados em uma ferramenta de gestão de referências chamada Zotero\footnote{Disponível em: \url{https://zotero.org/}. Acesso em: 29 ago. 2025.} para facilitar a organização. Em seguida, as duplicatas foram removidas. Uma primeira filtragem foi realizada através da leitura dos títulos, descartando artigos que claramente não se alinhavam ao tema. Além disso, apenas artigos publicados em periódicos avaliados por pares foram selecionados, demonstrando assim a relevância já posta à prova por outros pesquisadores.
+\item \textbf{Seleção Inicial}: Os títulos e resumos dos documentos restantes foram lidos para uma avaliação mais aprofundada da relevância. Nesta etapa, foram selecionados os estudos que apresentavam uma possível interseção com os objetivos e questões de pesquisa, mesmo que de forma preliminar.
+\item \textbf{Seleção Final}: A leitura completa dos artigos selecionados na etapa anterior foi realizada para verificar a interseção direta e aprofundada com os objetivos e questões de pesquisa desta dissertação. A qualidade metodológica e a contribuição científica de cada estudo foram avaliadas rigorosamente.
+\end{enumerate}
+
+\begin{table}[H]
+\centering
+\caption{Resultados das buscas utilizando os termos nas fontes definidas}
+\begin{tabularx}{\textwidth}{|c|X|c|c|c|}
+\hline
+\textbf{Ordem} & \textbf{Termos da Pesquisa} & \textbf{PBi} & \textbf{IEEEx} & \textbf{Science Direct} \\
+\hline
+1 & "microservices" AND "AI models" AND "communication" AND ("benchmark" OR "comparison" OR "study") & 218 & 4 & 0 \\
+\hline
+2 & "microservices" AND "orchestration" AND ("REST" OR "gRPC" OR "Apache Thrift") AND "benchmark" & 195 & 2 & 2 \\
+\hline
+3 & "conversational agents" AND "microservices architecture" & 12 & 0 & 2 \\
+\hline
+4 & "microservices" AND "AI models" AND "financial" & 86 & 3 & 1 \\
+\hline
+\multicolumn{2}{|r|}{\textbf{Total}} & \textbf{511} & \textbf{9} & \textbf{5} \\
+\hline
+\end{tabularx}
+\label{tab:3-total-rsl}
+\vspace{-0.3cm}
+{\raggedright \footnotesize Fonte: Elaborado pelo autor.\par}
+\end{table}
+
+
+\textbf{Etapas}: As etapas para seleção dos estudos foram aplicados em diferentes etapas do processo de revisão:
+\begin{itemize}
+\item \textbf{Etapa inicial de buscas}: Os filtros de \textit{período (2020-2025)} e \textit{idioma (inglês ou português)} foram aplicados diretamente nas plataformas de busca durante a recuperação inicial dos documentos.
+
+\item \textbf{Triagem por título e resumo}: Nestas etapas, avaliou-se preliminarmente a \textit{abordagem temática}, selecionando estudos que tratassem de aplicação de microsserviços em sistemas de \gls{ia} ou assistentes virtuais.
+
+\item \textbf{Leitura integral}: A \textit{ênfase em aspectos específicos} (desempenho, orquestração, escalabilidade ou desafios de comunicação) foi criteriosamente verificada apenas através da leitura completa dos artigos, constituindo-se no filtro mais refinado do processo.
+\end{itemize}
+
+Foram excluídos os trabalhos que não se enquadravam no escopo, como artigos sobre \acrfull{ia} sem relação com microsserviços ou microsserviços que não abordassem desempenho ou orquestração. Além disso, consideraram-se não elegíveis os artigos duplicados, revisões sistemáticas ou surveys, priorizando-se estudos primários empíricos, ou aqueles que não apresentassem conteúdo científico revisado por pares, como preprints não revisados, postagens de blogs sem autoria acadêmica e whitepapers sem rigor científico.
+
+\begin{figure}[H]
+\centering
+\caption{Processo de Revisão Sistemática da Literatura (Adaptado de \textcite{scannavino_revisao_2017})}
+\includegraphics[width=0.65\textwidth]{imagens/3-revisao-literatura.png} 
+\label{fig:rsl_process}
+{\par \raggedright \footnotesize Fonte: Elaborado pelo autor.}
+\end{figure}
+
+A \autoref{fig:rsl_process} mostra o processo de seleção e triagem de documentos, que abrange desde a identificação inicial até a inclusão final. Por meio de métodos automatizados com o Zotero, o conjunto inicial foi reduzido a 278 documentos. A revisão dos títulos resultou na identificação de 27 estudos possivelmente relacionados ao tema. A análise dos títulos e resumos refinou a seleção para 7 estudos, dos quais 3 foram escolhidos após leitura aprofundada, devido à sua relevância direta para a pesquisa e ao seu destaque em relação aos demais artigos selecionados. Os números totais podem ser visualizados na \autoref{tab:3-total-rsl}.
+
+A próxima seção examina os três artigos finais selecionados mediante uma análise crítica organizada em quatro dimensões principais: metodologia experimental (ambiente, ferramentas e cenários de teste), métricas de desempenho (latência, throughput, uso de recursos), motivação e objetivos, e conclusões e contribuições para a área. Essa abordagem multidimensional é estrategicamente alinhada aos objetivos desta pesquisa, uma vez que o exame detalhado das metodologias oferece insights para o desenho de nosso próprio ambiente de testes, a comparação das métricas possibilita a seleção das variáveis mais relevantes, a compreensão das motivações auxilia no posicionamento contextual de nossa contribuição, e a análise das conclusões fornece parâmetros comparativos para interpretar nossos resultados à luz do estado da arte. Dessa forma, esta seção não apenas sintetiza o conhecimento existente e estabelece um diálogo crítico entre os trabalhos identificando convergências e lacunas metodológicas, mas também fundamenta as escolhas metodológicas e analíticas adotadas neste trabalho.
+
+\section{Síntese dos Principais Trabalhos Relacionados}
+\label{sec:3-sintese-trabalhos}
+% -- Niswar 2024
+\input{capitulos/RSL/1.Niswar_2024}
+% -- Maulana 2022
+\vspace{\fill}
+\input{capitulos/RSL/2.Maulana_2022}
+% -- Jhingran 2024
+\input{capitulos/RSL/3.Jhingran_2024}
+
+\section{Síntese do Capítulo}
+\label{sec:sintese_capitulo}
+
+Neste capítulo, foi apresentada uma \acrfull{rsl}, conduzida segundo as diretrizes de \cite{scannavino_revisao_2017}, detalhando bases de dados, estratégias de busca e critérios de seleção para assegurar a qualidade científica dos estudos relacionados à orquestração de microsserviços e \gls{ia} Generativa no setor financeiro.
+
+A análise dos trabalhos revelou três vertentes principais de pesquisa: \textcite{niswar_performance_2024} estabeleceram a superioridade do \gls{grpc} sobre \gls{rest} e \acrshort{graphql} em cenários genéricos, mas sem considerar cargas de \gls{ia} generativa; \textcite{maulana_design_2022} demonstraram a viabilidade da migração para microsserviços no setor bancário, porém sem especificar protocolos de comunicação ou métricas de latência de cauda; e \textcite{jhingran_decentralized_2024} propuseram vantagens teóricas da descentralização em \gls{ia} generativa, mas sem validação experimental controlada.
+
+Esta pesquisa preenche lacunas identificadas ao combinar aspectos dos três trabalhos: a comparação rigorosa de protocolos de comunicação (expandindo para incluir Apache Thrift), o foco específico no setor financeiro (com requisitos de latência críticos), e a aplicação prática em sistemas de \gls{ia} generativa multimodal (validada experimentalmente). A contribuição, conforme comparada na \autoref{tab:posicionamento_estado_arte}, se posiciona como a primeira investigação experimental abrangente sobre orquestração de microsserviços para assistentes virtuais multimodais no contexto financeiro, oferecendo diretrizes práticas baseadas em evidências empíricas para decisões arquiteturais em um domínio de alta criticidade.
+
+\begin{table}[htbp]
+\centering
+\caption{Posicionamento deste trabalho no Estado da Arte}
+\label{tab:posicionamento_estado_arte}
+\makebox[\textwidth]{%
+\begin{tabularx}{1.2\textwidth}{|l|X|X|X|X|}
+\hline
+\textbf{Aspecto} & \textbf{\textcite{niswar_performance_2024}} & \textbf{\textcite{maulana_design_2022}} & \textbf{\textcite{jhingran_decentralized_2024}} & \textbf{Esta Dissertação} \\
+\hline
+Domínio de Aplicação & Sistema Educacional & Sistema Bancário Genérico & \gls{ia} Generativa Genérica & \textbf{Assistentes Virtuais Financeiros Multimodais} \\
+\hline
+Protocolos Comparados & \gls{rest}, \acrshort{graphql}, \gls{grpc} & Monolítico vs Microsserviços & Centralizado vs Descentralizado & \textbf{\gls{rest}, \gls{grpc}, Apache Thrift} \\
+\hline
+Ambiente de Teste & Dados estáticos & Migração real limitada & Teórico/simulado & \textbf{Ambiente controlado com \gls{ia} real} \\
+\hline
+Métricas de Latência & Tempo médio de resposta & Tempo de resposta básico & Comparação teórica & \textbf{p50, p95, p99 + máximos} \\
+\hline
+Complexidade dos Cenários & Dados planos vs aninhados & Carga única & Não especificado & \textbf{Simples, Tradicional, Complexo} \\
+\hline
+Foco em \gls{ia} Generativa & Não & Não & Sim (Teórico) & \textbf{Sim (Experimental)} \\
+\hline
+Setor Financeiro & Não & Sim (Genérico) & Não & \textbf{Sim (Específico)} \\
+\hline
+Tamanho Amostral & Limitado & Caso único & N/A & \textbf{15 replicações × 3 cenários × 3 protocolos} \\
+\hline
+Multimodalidade & Não & Não & Sim (\gls{llm}) & \textbf{Sim (\gls{stt}, \gls{llm} e \gls{tts})} \\
+\hline
+\end{tabularx}%
+}
+{\par \raggedright \footnotesize Fonte: Elaborado pelo autor.\par}
+\end{table}
+

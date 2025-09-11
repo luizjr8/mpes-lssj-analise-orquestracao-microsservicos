@@ -1,0 +1,18 @@
+# Ignore cached files downloaded by services
+.cache/
+
+# Ignore Python bytecode and temporary files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ignore OS-specific files
+.DS_Store
+mpes-stt/models/
+mpes-llm/models/
+mpes-tts/models/
+models/
+mpes-tts/tts_cache
+tts_cache/*
+# k6/results
+node_modules/

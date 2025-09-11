@@ -1,0 +1,37 @@
+services:
+  mpes-maestro:
+    build: ./maestro
+    image: mpes-maestro
+    ports:
+      - "7000:7000"
+
+  mpes-stt:
+    build: ./mpes-stt
+    image: mpes-stt
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./models:/app/models
+
+  mpes-llm:
+    build: ./mpes-llm
+    image: mpes-llm
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    ports:
+      - "8001:8001"
+    volumes:
+      - ./models:/app/models
+
+  mpes-tts:
+    build: ./mpes-tts
+    image: mpes-tts
+    ports:
+      - "8002:8002"
+    volumes:
+      - ./models:/app/models

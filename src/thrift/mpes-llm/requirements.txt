@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+pydantic
+httpx
+llama-cpp-python
+numpy
+torch
+thriftpy2

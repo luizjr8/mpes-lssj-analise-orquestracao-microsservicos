@@ -1,0 +1,5 @@
+pydantic
+TTS
+grpcio
+grpcio-tools
+protobuf

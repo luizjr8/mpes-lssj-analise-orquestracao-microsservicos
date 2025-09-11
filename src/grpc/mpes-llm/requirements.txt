@@ -1,0 +1,6 @@
+pydantic
+llama-cpp-python
+torch
+grpcio
+grpcio-tools
+protobuf

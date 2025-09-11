@@ -1,0 +1,65 @@
+\chapter{Considerações finais}
+\label{ch:6conclusoes}
+
+Esta dissertação investigou de maneira aprofundada como a arquitetura de microsserviços e a escolha de protocolos de comunicação influenciam o desempenho, a escalabilidade e a eficiência operacional de assistentes virtuais no setor financeiro. O estudo iniciou com uma revisão abrangente da literatura sobre arquiteturas de software distribuídas e a aplicação de \acrfull{ia} em fluxos multimodais, estabelecendo uma base teórica sólida. Em seguida, avançou para uma fase experimental estruturada que comparou, sob condições controladas e em cenários de carga realistas, os protocolos \gls{rest}, \gls{grpc} e Thrift, fornecendo uma base empírica robusta e inédita para as conclusões.
+
+Os resultados experimentais indicam que os protocolos \gls{grpc} e Thrift, ao utilizarem serialização binária e conexões persistentes, proporcionam ganhos significativos em cenários de alta demanda, reduzindo a latência end-to-end em aproximadamente 40\% a 60\% nos percentis de cauda (\textit{p95}, \textit{p99}) e aumentando a eficiência computacional em comparação ao protocolo \gls{rest}. Essas vantagens derivam do \textit{overhead} reduzido na serialização e da utilização de protocolos mais eficientes, como o \acrshort{http}/2 no caso do \gls{grpc}, o que torna esses protocolos adequados para fluxos críticos e operações intensivas, como a análise de risco em tempo real.
+
+Em contrapartida, o protocolo \gls{rest} permanece relevante devido à simplicidade, à ampla adoção e à facilidade de integração, sendo indicado para cenários que priorizam a interoperabilidade e o desenvolvimento rápido, mesmo com compromissos de maior latência e custo operacional. A análise segmentada do fluxo multimodal evidenciou que, embora a comunicação eficiente entre microsserviços seja crítica, o processamento dos modelos de \gls{ia} representa o maior desafio em termos de latência. Isso indica que os ganhos de otimização da comunicação, apesar de significativos, não eliminam a latência intrínseca ao processamento cognitivo.
+
+\section{Contribuições}
+Como contribuições práticas, este trabalho oferece um \textbf{modelo de experimentação replicável} e uma \textbf{análise comparativa detalhada} para a avaliação de protocolos de comunicação em pipelines de \acrfull{ia} multimodal. A dupla contribuição (o método de avaliação e os resultados empíricos) fornece um framework que quantifica o desempenho de maneira rigorosa e orienta a criação de uma matriz de decisão para instituições financeiras. A matriz auxilia na escolha tecnológica mais alinhada aos objetivos estratégicos, considerando fatores críticos como volume de transações, requisitos regulatórios, sensibilidade temporal e custo-benefício.
+
+Do ponto de vista acadêmico, esta pesquisa preenche uma lacuna identificada na literatura, uma vez que poucos trabalhos realizam uma comparação abrangente e controlada dos três protocolos (\gls{rest}, \gls{grpc} e Thrift) em conjunto, especialmente no contexto de sistemas de \gls{ia} generativa e multimodal para o setor financeiro. Os achados fornecem subsídios concretos e evidências empíricas que fundamentam decisões de arquitetura, promovendo a construção de soluções mais robustas, eficientes e adequadas às exigências desse domínio.
+
+Em síntese, a dissertação demonstra que arquiteturas de microsserviços, quando planejadas de forma meticulosa e suportadas por protocolos de comunicação otimizados, são fundamentais para o desenvolvimento de assistentes virtuais financeiros escaláveis, resilientes e inovadores. Os resultados contribuem tanto para o avanço do conhecimento acadêmico quanto para a aplicação prática, servindo como referência para profissionais e pesquisadores que buscam soluções de \acrfull{ia} eficazes e alinhadas às demandas de um mercado em constante evolução.
+
+\section{Reflexões sobre o Processo de Pesquisa}
+
+Ao longo desta pesquisa, tornou-se evidente que o processo de investigação científica é, em essência, uma jornada de aprendizado contínuo. Mais do que os resultados finais, a experiência de construir metodologias, enfrentar desafios técnicos e refinar abordagens experimentais revelou-se tão valiosa quanto as próprias descobertas. Essa compreensão motivou uma decisão deliberada: documentar e disponibilizar publicamente o maior número possível de artefatos que facilitem o trabalho de futuros pesquisadores.
+
+Nesse sentido, todos os códigos-fonte, scripts de experimentação, configurações de infraestrutura e conjuntos de dados gerados durante esta pesquisa foram organizados e disponibilizados em um repositório público no GitHub\footnote{Repositório disponível em https://github.com/luizjr8/mpes-lssj-analise-orquestracao-microsservicos. Acesso em 01/09/2025}. Além disso, o próprio modelo LaTeX desta dissertação foi estruturado de forma a servir como referência para trabalhos futuros, incluindo exemplos de formatação, gerenciamento de referências bibliográficas segundo as normas ABNT e organização de experimentos científicos.
+
+A escolha de compartilhar esses recursos não apenas contribui para a transparência e a reprodutibilidade da pesquisa — aspectos fundamentais do método científico — mas também reconhece que o verdadeiro progresso acadêmico se constrói de forma colaborativa e incremental. Durante o desenvolvimento deste trabalho, o acesso a repositórios públicos, documentações detalhadas e artefatos de pesquisas anteriores foi determinante para superar obstáculos técnicos e metodológicos. Espera-se, portanto, que os artefatos aqui disponibilizados possam cumprir papel semelhante para novos pesquisadores, acelerando suas investigações e permitindo que se concentrem em avançar o conhecimento ao invés de reconstruir fundações.
+
+\section{Trabalhos Futuros}
+
+Como desdobramentos desta pesquisa, propõe-se três direções principais para investigações futuras, visando ao aprofundamento tanto nas arquiteturas de software quanto na relação com a infraestrutura e nos aspectos operacionais e de longo prazo.
+
+\subsection{Aprimoramento de Arquiteturas e Padrões de Comunicação}
+
+A primeira direção concentra-se na investigação de arquiteturas e padrões de orquestração mais avançados para \textit{microsserviços}.
+
+\begin{itemize}
+    \item \textbf{Service Mesh para Comunicação Resiliente:} Propõe-se a implementação e avaliação de um \textit{service mesh} (como Istio\footnote{Disponível em \hyperlink{https://istio.io/}{https://istio.io/}. Acesso em 28/08/2025} ou Linkerd\footnote{Disponível em \hyperlink{https://linkerd.io/}{https://linkerd.io/}. Acesso em 28/08/2025}) para gerenciar a comunicação entre serviços de forma transparente. Seria interessante quantificar o impacto dessa camada em parâmetros críticos como \textbf{latência}, \textbf{resiliência} (através de políticas de retry e \textit{circuit breaking}) e \textbf{observabilidade} (coleta de métricas detalhadas e \textit{tracing} distribuído). Este estudo permitiria entender o \textit{trade-off} entre o controle fino oferecido pelo \textit{mesh} e o \textbf{overhead} por ele introduzido.
+    
+    \item \textbf{Padrões de Comunicação Assíncrona e Orquestração de Sagas:} Uma linha de investigação complementar e crucial seria expandir a análise para a comunicação \textbf{assíncrona} utilizando \textit{brokers} de mensagens como Apache Kafka. O foco seria avaliar padrões como SAGA e Outbox Pattern para garantir consistência de dados em operações distribuídas de longa duração, comparando sua eficácia e complexidade de implementação com as abordagens síncronas já estudadas.
+    
+    \item \textbf{Protocolos Avançados para Casos de Uso Específicos:} Para otimizar a transmissão de dados contínuos ou de grande volume, como fluxos de áudio, investigações futuras devem explorar técnicas como \textbf{streaming} de gRPC, a adoção do HTTP/3/QUIC (para reduzir a latência de conexão em cenários com alta perda de pacotes) e algoritmos de compressão mais eficientes para \textit{payloads} de áudio, analisando o equilíbrio entre ganho de banda e custo computacional.
+\end{itemize}
+
+\subsection{Avaliação em Ambientes Heterogêneos e Aspectos de Infraestrutura}
+
+A segunda direção objetiva expandir a avaliação para ambientes mais complexos e próximos da realidade produtiva, considerando as restrições de infraestrutura e os aspectos econômicos.
+
+\begin{itemize}
+    \item \textbf{Escalabilidade Automática e Interferência (\textit{Noisy Neighbor}):} É fundamental analisar o comportamento dos protocolos sob políticas de escalabilidade automática, como o Horizontal Pod Autoscaler (HPA) do Kubernetes, sob cargas variáveis. Um aspecto relevante seria investigar os efeitos do fenômeno \textit{noisy neighbor} em ambientes multi-tenant, medindo como a contensão por recursos de rede e CPU impacta a performance e a previsibilidade dos diferentes protocolos.
+    
+    \item \textbf{Custos em Nuvem e \textit{Trade-offs} de Infraestrutura:} Futuros trabalhos devem incorporar uma análise de \textbf{custos} em ambientes de nuvem, explorando os \textbf{trade-offs} entre diferentes tipos de instância (CPU vs. GPU), estratégias de \textit{co-location} de serviços e políticas de escalabilidade. O objetivo seria desenvolver modelos que auxiliem na escolha da infraestrutura mais custo-eficiente para uma dada carga de trabalho e padrão de comunicação.
+    
+    \item \textbf{Segurança e Seu Impacto na Performance:} Por fim, uma investigação essencial seria medir o \textbf{overhead} introduzido por mecanismos de segurança como autenticação mútua (mTLS), autorização refinada e a imposição de políticas de segurança em rede. Compreender este impacto é crucial para equilibrar os requisitos de segurança com a eficiência operacional em implantações reais.
+\end{itemize}
+
+\subsection{Estudos de Longo Prazo e Análise de Resiliência Operacional}
+
+A terceira direção propõe investigações que contemplem aspectos temporais e operacionais frequentemente negligenciados em estudos de curto prazo, mas fundamentais para ambientes de produção.
+
+\begin{itemize}
+    \item \textbf{Observação de Comportamento em Produção de Longo Prazo:} Propõe-se a condução de estudos longitudinais que monitorem o comportamento dos protocolos em ambientes de produção reais por períodos estendidos (6 a 12 meses). Esses estudos devem capturar a degradação de performance ao longo do tempo, identificar padrões sazonais de carga, analisar a evolução de métricas de \textit{tail latency} e investigar fenômenos como vazamentos de memória, acúmulo de conexões ou degradação gradual que não são observáveis em testes de curta duração.
+    
+    \item \textbf{Análise de Custos e Complexidade de Migração:} Uma investigação crucial para organizações que consideram transições arquiteturais seria quantificar os \textbf{custos reais de migração} entre diferentes protocolos. Este estudo deve incluir não apenas custos de infraestrutura, mas também o esforço de desenvolvimento (refatoração de código, adaptação de bibliotecas), custos de treinamento de equipes, impacto em integrações existentes e o período de \textit{downtime} necessário. A criação de um modelo de análise de custo-benefício temporal ajudaria organizações a tomar decisões informadas sobre quando e como realizar tais migrações.
+    
+    \item \textbf{Resiliência e Recuperação de Falhas em Componentes:} Estudos futuros devem investigar sistematicamente como cada protocolo se comporta sob diferentes tipos de falhas: falhas de rede intermitentes, indisponibilidade parcial de serviços, sobrecarga temporária de componentes e cenários de \textit{cascading failures}. Seria valioso medir métricas como tempo de detecção de falha, tempo de recuperação, taxa de requisições perdidas e a eficácia de diferentes estratégias de \textit{circuit breaking} e \textit{retry}. A análise deve considerar também o comportamento dos protocolos durante atualizações de serviços (\textit{rolling updates}) e procedimentos de \textit{disaster recovery}.
+    
+    \item \textbf{Evolução e Manutenibilidade de Sistemas Distribuídos:} Uma linha de pesquisa complementar seria investigar como a escolha de protocolos impacta a \textbf{manutenibilidade} e a capacidade de evolução de sistemas ao longo do tempo. Isso incluiria análise de compatibilidade retroativa (\textit{backward compatibility}), facilidade de versionamento de APIs, impacto de mudanças de schema e a complexidade de manter múltiplas versões de serviços em operação simultânea durante períodos de transição.
+\end{itemize}

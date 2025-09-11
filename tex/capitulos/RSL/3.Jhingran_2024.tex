@@ -1,0 +1,45 @@
+\subsection{Decentralized Generative AI Model Deployment Using Microservices \cite{jhingran_decentralized_2024}}
+\label{subsec:jhingran_decentralized}
+
+\textcite{jhingran_decentralized_2024} propõem uma solução para a implantação de modelos de \acrfull{ia} Generativa de forma descentralizada, utilizando uma arquitetura baseada em microsserviços. O estudo aborda os desafios inerentes à implantação de modelos complexos de \gls{ia} Generativa em sistemas centralizados, como gargalos de desempenho, falta de flexibilidade e dificuldades de escalabilidade. A motivação dos autores reside nas limitações dos sistemas centralizados, que frequentemente resultam em alta latência, comprometimento da integridade dos dados em situações de múltiplas requisições concorrentes \cite{lu_computing_2024}, além do considerável consumo de largura de banda e recursos computacionais. A pesquisa visa demonstrar como a abordagem descentralizada, habilitada por microsserviços, pode otimizar o uso de recursos, melhorar a tolerância a falhas e aumentar a escalabilidade, permitindo a distribuição da carga de trabalho entre múltiplos nós e reduzindo a latência ao processar dados mais próximos da "borda" da rede \cite{jhingran_performance_2021}.
+
+A solução proposta consiste na divisão de modelos de \gls{ia} Generativa em componentes modulares, com cada módulo implementado como um microsserviço \cite{gustrowsky_using_2024}. Esses microsserviços comunicam-se por meio de \acrfull{api}s \gls{rest}, permitindo a execução em ambientes on-premise ou na nuvem. Essa distribuição da carga computacional tem como objetivo reduzir a latência e otimizar a largura de banda. O processo de implantação envolve etapas como o particionamento do modelo em submódulos, a conteinerização (com Docker), a implantação em nós distribuídos (com Kubernetes), o autoescalonamento, o balanceamento de carga, o monitoramento, a tolerância a falhas, a integração \acrfull{ci/cd} e considerações de segurança e privacidade dos dados.
+
+A avaliação do desempenho da solução descentralizada foi realizada por meio de diversas métricas comparativas entre as abordagens centralizada e descentralizada. Os resultados, apresentados na  \autoref{tab:3-jhingran_performance_comparison}, destacam melhorias significativas em áreas como latência, utilização de largura de banda, tolerância a falhas, tempo de resposta, custo, consumo de energia e eficiência na utilização de computação.
+
+\begin{table}[H]
+\centering
+\caption{Comparação entre Arquiteturas Centralizadas e Descentralizadas.}
+\label{tab:3-jhingran_performance_comparison}
+\begin{tabularx}{\textwidth}{| X | c | c | c | c |}
+\hline
+\textbf{Métrica} & \textbf{Monolítica} & \textbf{Microsserviços} & \textbf{Melhoria (\%)} & \textbf{Unidade} \\
+\hline
+Latência                  & 250ms   & 50ms    & 80 & ms \\
+\hline
+Uso de Banda              & 100GB   & 30GB    & 70 & GB \\
+\hline
+Tolerância a Falhas       & 60\%    & 95\%    & 35 & \% \\
+\hline
+Escalabilidade            & Média   & Alta    & N/A & Qualitativa \\
+\hline
+Tempo de Resposta         & 500ms   & 100ms   & 80 & ms \\
+\hline
+Consumo de Energia          & 3000W   & 1200W   & 60 & Watts \\
+\hline
+Acurácia do Modelo        & 90\%    & 92\%    & 2  & \% \\
+\hline
+\end{tabularx}
+{\par \raggedright \footnotesize Fonte: \textcite{jhingran_decentralized_2024}\par}
+\end{table}
+
+
+A análise dos resultados demonstra claramente as vantagens da implantação dos modelos de \gls{ia} Generativa de forma descentralizada em microsserviços. Esses aspectos são especialmente relevantes para aplicações que exigem eficiência, custo-benefício e confiabilidade. Como pode ser observado na \autoref{tab:3-jhingran_performance_comparison}, a latência foi reduzida em\textbf{ 80\% (de 250 ms para 50ms)} e o tempo de resposta também diminuiu em \textbf{80\% (de 500 ms para 100 ms)}, o que melhora significativamente a experiência do usuário e possibilita processamento em tempo real. Além disso, a utilização da largura de banda apresentou uma melhoria de \textbf{70\%}, indicando menores custos de transferência de dados e maior velocidade no manuseio de informações.
+
+Além disso, a tolerância a falhas aumentou em \textbf{35\%} e a escalabilidade foi classificada como alta, indicando que os sistemas descentralizados são mais resilientes a interrupções e falhas de modelo, o que eleva a confiabilidade e a disponibilidade do sistema. A eficiência de custos é notável, com uma redução de 70\% (de \$5000 para \$1500), o que torna a implantação descentralizada mais econômica para aplicações de \gls{ia} em larga escala. O \textbf{consumo de energia} foi reduzido em\textbf{ 60\%}, alinhando-se aos objetivos de sustentabilidade e diminuindo os custos operacionais. 
+
+\subsubsection{Resumo do Estudo}
+
+O estudo de \textcite{jhingran_decentralized_2024} demonstra experimentalmente as vantagens da implantação descentralizada de modelos de \gls{ia} Generativa em arquiteturas de microsserviços, apresentando melhorias substanciais em \textbf{latência (80\%)}, \textbf{custo (70\%)} e tolerância a \textbf{falhas (35\%)} em comparação com sistemas centralizados. A pesquisa apresenta uma abordagem prática para superar limitações de escalabilidade e recursos em sistemas de \gls{ia}, estabelecendo diretrizes para a implantação distribuída que otimiza o desempenho e a eficiência operacional.
+
+Entretanto, o trabalho apresenta limitações metodológicas importantes que a pesquisa busca endereçar. Enquanto \textcite{jhingran_decentralized_2024} focam em comparações teóricas entre arquiteturas centralizadas e descentralizadas sem especificar protocolos de comunicação ou validação experimental controlada, a investigação preenche essa lacuna ao comparar empiricamente protocolos específicos (\gls{rest}, \gls{grpc}, Apache Thrift) em cenários reais de assistentes virtuais multimodais no setor financeiro. Adicionalmente, a abordagem considera não apenas métricas de desempenho geral, mas também aspectos críticos como latência de cauda (p95, p99) e eficiência de recursos sob diferentes complexidades de processamento de \gls{ia}, oferecendo diretrizes práticas para decisões arquiteturais em domínios de alta criticidade.

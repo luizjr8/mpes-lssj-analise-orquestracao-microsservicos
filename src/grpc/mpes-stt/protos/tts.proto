@@ -1,0 +1,15 @@
+syntax = "proto3";
+package mpes.tts;
+
+service TTSService {
+  rpc Synthesize(SynthRequest) returns (SynthReply);
+}
+
+message SynthRequest {
+  string text = 1;
+}
+
+message SynthReply {
+  bytes audio = 1;
+  string error = 2;
+}

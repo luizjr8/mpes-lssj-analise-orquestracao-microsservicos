@@ -1,0 +1,4 @@
+openai_whisper
+grpcio
+grpcio-tools
+protobuf
